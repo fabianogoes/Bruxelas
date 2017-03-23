@@ -12,10 +12,3 @@ Bruxelas Project - Connect to Practice
 * Spring Security
 
 ![Dash](doc/dash-1.0.JPG)
-
-
-### Development Environemnt
-
-* CREATE SCHEMA `bruxelas` DEFAULT CHARACTER SET utf8;
-
-
