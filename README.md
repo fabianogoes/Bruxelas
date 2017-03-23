@@ -1,2 +1,2 @@
 # Bruxelas
-Projeto Bruxelas - Connect to Practice
+Bruxelas Project - Connect to Practice
