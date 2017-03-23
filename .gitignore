@@ -10,3 +10,13 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+.metadata/
+.recommenders/
+RemoteSystemsTempFiles/
+BruxelasBackend/.settings/
+BruxelasBackend/.mvn/
+BruxelasBackend/target/
+BruxelasBackend/.classpath
+BruxelasBackend/.project
+BruxelasBackend/mvnw
+BruxelasBackend/mvnw.cmd
