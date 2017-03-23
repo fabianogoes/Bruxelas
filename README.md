@@ -11,4 +11,6 @@ Bruxelas Project - Connect to Practice
 * Spring Social
 * Spring Security
 
+![Dash](doc/dash-1.0.JPG)
+
 
