@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd BruxelasBackend/
+mvn clean
