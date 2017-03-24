@@ -1,5 +1,7 @@
 package com.bruxelas.api.controllers;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,23 @@ public class TalkerRestController {
 	
 	@Autowired
 	private TalkerService talkerService;
+	
+	@RequestMapping(produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<String> get(){
+		logger.info( "get()..." );
+		ResponseEntity<String> responseEntity = null;
+		try {
+			List<Talker> talkers = this.talkerService.findAll();
+			
+			HttpHeaders responseHeaders = new HttpHeaders();
+			String usuariosJson = new ObjectMapper().writeValueAsString(talkers);
+			responseEntity = new ResponseEntity<String>(usuariosJson, responseHeaders, HttpStatus.OK);
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+		}
+		return responseEntity;
+	}
 	
 	@RequestMapping(method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_UTF8_VALUE, produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<String> post(@RequestBody Talker talker){

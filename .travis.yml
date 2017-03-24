@@ -1,0 +1,11 @@
+language: java
+
+before_install:
+  - cd BruxelasBackend/
+
+script:
+  - mvn clean
+
+jdk:
+ - oraclejdk8
+

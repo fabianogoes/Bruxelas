@@ -3,9 +3,13 @@ package com.bruxelas.services;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Matchers.anyString;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+
+import java.util.Arrays;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -33,7 +37,7 @@ public class TalkerServiceTest {
 	
 	@Mock
 	private TalkerRepository talkerRepositoryMock;
-	
+
 	@Before
 	public void init(){
 		MockitoAnnotations.initMocks(this);
@@ -50,5 +54,18 @@ public class TalkerServiceTest {
 		assertEquals("[talkerResponse] should be equals to [talkerAny]", talkerAny, talkerResponse);
 		
 		verify(this.talkerRepositoryMock, times(1)).save(talkerAny);
+	}
+	
+	@Test
+	public void testFindAll(){
+		List<Talker> talkersMock = Arrays.asList(mock(Talker.class));
+		
+		when(this.talkerRepositoryMock.findAll()).thenReturn(talkersMock);
+		
+		List<Talker> talkersReponse = (List<Talker>) this.talkerRepositoryMock.findAll();
+		assertNotNull("[talkersReponse] should not be null", talkersReponse);
+		assertEquals("[talkersMock] should be equals to talkersReponse", talkersMock, talkersReponse);
+		
+		verify(this.talkerRepositoryMock, times(1)).findAll();
 	}
 }
