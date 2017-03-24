@@ -34,12 +34,12 @@ public class DashRestControllerTest {
 	private MockMvc mockMvc;
 	
 	@InjectMocks
-	private DashRestController DashRestControllerMock;
+	private DashRestController dashRestControllerMock;
 	
 	@Before
     public void setup() throws Exception {
 		MockitoAnnotations.initMocks(this);
-		this.mockMvc = MockMvcBuilders.standaloneSetup(DashRestControllerMock).build();
+		this.mockMvc = MockMvcBuilders.standaloneSetup(dashRestControllerMock).build();
     }   
     
 	@Test
