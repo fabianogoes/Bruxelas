@@ -20,3 +20,6 @@ BruxelasBackend/.classpath
 BruxelasBackend/.project
 BruxelasBackend/mvnw
 BruxelasBackend/mvnw.cmd
+.DS_Store
+BruxelasFrontend/.DS_Store
+BruxelasBackend/.DS_Store
