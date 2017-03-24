@@ -1,5 +1,7 @@
 package com.bruxelas.services;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,11 @@ public class TalkerService {
 		logger.info("save("+talker+")");
 		talker = this.talkerRepository.save(talker);
 		return talker;
+	}
+
+	public List<Talker> findAll() {
+		logger.info("findAll()");
+		return (List<Talker>) this.talkerRepository.findAll();
 	}
 
 }

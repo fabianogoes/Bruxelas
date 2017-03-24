@@ -5,9 +5,13 @@ import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.util.Arrays;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -61,8 +65,7 @@ public class TalkerRestControllerTest {
 
 		when(this.talkerServiceMock.save(talkerAny)).thenReturn(talkerAny);
 		
-		ResultActions resultActions = mockMvc.perform(
-				post("/talker")
+		ResultActions resultActions = mockMvc.perform(post("/talker")
 				.contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
 				.content(talkerAsJson))
         		.andExpect(status().isOk())
@@ -79,4 +82,21 @@ public class TalkerRestControllerTest {
 		verify(this.talkerServiceMock, times(1)).save(talkerAny);
 	}
 	
+	@Test
+	public void testFindAll() throws Exception{
+		List<Talker> talkersMock = Arrays.asList(new Talker(1L, "teste"));
+		
+		when(this.talkerServiceMock.findAll()).thenReturn(talkersMock);
+		
+		ResultActions resultActions = mockMvc.perform(get("/talker"))
+				.andExpect(status().isOk())
+        		.andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE));
+		
+		MockHttpServletResponse response = resultActions.andReturn().getResponse();
+		List<Talker> talkersResponse = Arrays.asList(new ObjectMapper().readValue(response.getContentAsString(), Talker[].class));
+		assertNotNull("[talkersResponse] should not be null", talkersResponse);
+		assertEquals("[talkersMock] should be equals to [talkersResponse]", talkersMock, talkersResponse);
+		
+		verify(this.talkerServiceMock, times(1)).findAll();
+	}
 }
