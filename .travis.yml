@@ -3,3 +3,19 @@ sudo: false
 jdk:
  - oraclejdk8
 
+ before_script:
+  - "echo execute before"
+
+stages:
+  - build
+  - test
+  - deploy
+
+testing:
+  script:
+    - "echo execute testing"
+    - ./mvnbuild
+  stage: test
+  only:
+    - branches  
+
