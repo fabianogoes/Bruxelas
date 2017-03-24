@@ -39,23 +39,23 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-fixed-top navbar-default">
+    <nav class="navbar navbar-fixed-top navbar-default navbar-white-green">
       <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" style="color:white;">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">
-            <img src="img/logo.png" style="height: 100%">
+          <a class="navbar-brand" href="#" style="padding-top: 10px;">
+            <img src="img/favicon.png" style="height: 30px;width: 30px;">
           </a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
            <ul class="nav navbar-nav navbar-right">
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" style="color: #5C953D;"
                             aria-haspopup="true"   aria-expanded="false">
                   <i class="fa fa-bell-o" aria-hidden="true"></i>
                   <span class="badge label-danger">3</span>
@@ -67,7 +67,7 @@
                   <li><a href="#">CCC Asking Connection</a></li>
                 </ul>
               </li>              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Fabiano Góes <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: #5C953D;">Fabiano Góes <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li class="dropdown-header">User Profile</li>
                   <li><a href="#"><i class="fa fa-id-card-o" aria-hidden="true"></i> Profile</a></li>
@@ -85,24 +85,80 @@
       </div><!-- /.container -->
     </nav><!-- /.navbar -->
 
-    <div class="container">
+    <div class="talkers-container">
 
       <div class="row row-offcanvas row-offcanvas-right">
 
-        <div class="col-xs-12 col-sm-9">
-          <p class="pull-right visible-xs">
-            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
-          </p>
-          <div class="row">
-            
-            <div class="panel panel-default">
+        <div class="col-xs-12">
+            <div class="panel panel-default talkers">
               <div class="panel-heading bg-light-greenblue-transparent">
-                <h3 class="panel-title">Talkers</h3>
-              </div>
-              <div class="panel-body bg-body-panel-default">
-                
                 <div class="row">
-                  <div class="col-md-12">                
+									<div class="col-xs-6">
+										<h3 class="panel-title">Talkers</h3>
+									</div>
+									<div class="col-xs-6 text-right visible-less-than-sm">
+											<div class="dropdown">											
+													<a href="" style="color:white;" class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+												<span class="caret"></span>
+											</a>
+												<ul class="dropdown-menu" aria-labelledby="dropdownMenu1"> 
+													<li class="dropdown-header">
+														<select class="form-control">
+																<option>Language</option>
+																<option>Any</option>
+																<option>English</option>
+																<option>Brazilian</option>
+															</select>
+													</li>
+													<li class="dropdown-header">
+														<select class="form-control">
+																<option>Week Day</option>
+																<option>Any</option>
+																<option>Monday</option>
+																<option>Tuesday</option>
+																<option>Wednesday</option>
+																<option>Thursday</option>
+																<option>Friday</option>
+																<option>Saturday</option>
+																<option>Sunday</option>
+															</select>
+													</li>
+													<li class="dropdown-header">
+														<select class="form-control">
+																<option>Period</option>
+																<option>Any</option>
+																<option>Morning</option>
+																<option>Afternoon</option>
+																<option>Night</option>
+															</select>
+													</li>
+													<li class="dropdown-header">
+														<select class="form-control">
+																<option>Gender</option>
+																<option>Any</option>
+																<option>Male</option>
+																<option>Female</option>
+															</select>
+													</li>										
+													<li class="dropdown-header">
+															<select class="form-control">
+																<option>Status</option>
+																<option>Any</option>
+																<option>Avaliable</option>
+																<option>Unvaliable</option>
+															</select>										
+													</li>
+													<li class="dropdown-header">
+															 <button type="button" class="btn btn-primary btn-block">
+																 <i class="fa fa-search" aria-hidden="true"></i>
+															 </button> 
+													</li>
+												</ul>
+											</div>		
+										</div>
+								</div>
+              </div>
+              <div class="panel-body bg-body-panel-default visible-more-than-sm">               
                     
                     <form>
                       <div class="col-md-1">
@@ -163,6 +219,12 @@
 
                     <br/><br/>
                     <br/> 
+
+							</div>
+						</div>
+							
+            <div class="panel panel-default">
+              <div class="panel-body bg-body-panel-default">
 
                     <!-- Talker -->
                     <div class="panel panel-default">
@@ -280,46 +342,42 @@
              
 
                   </div>
-                </div>
 
               </div>
-            </div>    
 
           </div><!--/row-->
 
         </div><!--/.col-xs-12.col-sm-9-->
 
-        <div class="panel panel-default menu-sidebar-right" id="sidebar">
-          
-            <div class="panel-heading bg-light-greenblue-transparent">
-              <h3 class="panel-title">
-                Connected
-                <span class="badge pull-right">3</span>
-              </h3>
-            </div>
-            <div class="panel-body">
-
-              <div class="list-group" style="height: 100%;overflow: auto;">
-                  <a href="#" class="list-group-item">Fabiano <span class="flag-icon flag-icon-br pull-right"></span></a>
-                  <a href="#" class="list-group-item">Diego <span class="flag-icon flag-icon-ng pull-right"></span></a>
-                  <a href="#" class="list-group-item">Felipe <span class="flag-icon flag-icon-um pull-right"></span></a>
-              </div>
-
-            </div>
-          
-        </div><!--/.sidebar-offcanvas-->
-      </div><!--/row-->
-
-      <hr>
-
-      <footer class="footer bg-light-green-transparent text-center">
-		  <p>
-          <img src="img/logo-green.png" style="height: 25px"> 
-          Copyright <i class="fa fa-copyright" aria-hidden="true"></i> 2017 Bruxelas Project, Inc.
-        </p>
-      </footer>
-
     </div><!--/.container-->
+		<div class="panel panel-default menu-sidebar-right menu-sidebar-right-xs">
+
+				<div class="panel-heading bg-light-greenblue-transparent">
+					<h3 class="panel-title">
+						Connected
+						<span class="badge pull-right">3</span>
+					</h3>
+				</div>
+				<div class="panel-body">
+
+					<div class="list-group" style="height: 100%;overflow: auto;">
+							<a href="#" class="list-group-item">Fabiano <span class="flag-icon flag-icon-br pull-right"></span></a>
+							<a href="#" class="list-group-item">Diego <span class="flag-icon flag-icon-ng pull-right"></span></a>
+							<a href="#" class="list-group-item">Felipe <span class="flag-icon flag-icon-um pull-right"></span></a>
+					</div>
+
+				</div>
+
+		</div><!--/.sidebar-offcanvas-->
+
+	<hr>
+
+	<footer class="footer bg-light-green-transparent text-center">
+	<p>
+			<img src="img/logo-green.png" style="height: 25px"> 
+			Copyright <i class="fa fa-copyright" aria-hidden="true"></i> 2017 Bruxelas Project, Inc.
+		</p>
+	</footer>
 
 
     <!-- Bootstrap core JavaScript
