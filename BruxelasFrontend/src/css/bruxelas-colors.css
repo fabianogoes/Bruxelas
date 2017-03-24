@@ -1,0 +1,10 @@
+:root {
+	--main-color: #5C953D /*#4ac6be*/;
+	--main-color-border: #C0C5CE;
+	--main-color-hover: #0C5521;
+}
+
+.text-yellow {
+  color: #FFDD00;
+}
+

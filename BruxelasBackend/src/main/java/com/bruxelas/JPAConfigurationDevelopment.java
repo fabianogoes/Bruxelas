@@ -20,8 +20,8 @@ public class JPAConfigurationDevelopment implements JPAConfiguration {
     	System.out.println( "<<< Profile = dev >>>" );
 		String host = System.getenv().get("OPENSHIFT_MYSQL_DB_HOST") == null ? "localhost" : System.getenv().get("OPENSHIFT_MYSQL_DB_HOST");
 		String port = System.getenv().get("OPENSHIFT_MYSQL_DB_PORT") == null ? "3306" : System.getenv().get("OPENSHIFT_MYSQL_DB_PORT");
-		String user = System.getenv().get("OPENSHIFT_MYSQL_DB_USERNAME") == null ? "root" : System.getenv().get("OPENSHIFT_MYSQL_DB_USERNAME");
-		String pass = System.getenv().get("OPENSHIFT_MYSQL_DB_PASSWORD") == null ? "root" : System.getenv().get("OPENSHIFT_MYSQL_DB_PASSWORD");
+		String user = System.getenv().get("OPENSHIFT_MYSQL_DB_USERNAME") == null ? "bruxelas" : System.getenv().get("OPENSHIFT_MYSQL_DB_USERNAME");
+		String pass = System.getenv().get("OPENSHIFT_MYSQL_DB_PASSWORD") == null ? "bruxelas" : System.getenv().get("OPENSHIFT_MYSQL_DB_PASSWORD");
 		
 		String database = "bruxelas";
 		String url = "jdbc:mysql://" + host + ":" + port + "/" + database + "?autoReconnect=true&useSSL=false";
