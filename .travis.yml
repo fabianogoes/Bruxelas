@@ -1,12 +1,8 @@
 language: java
-sudo: false
-jdk:
- - oraclejdk8
-
- before_script:
-  - "echo execute before"
 
 script:
-  - "echo execute testing"
-  - ./mvnbuild
+ - ./mvnbuild
+
+jdk:
+ - oraclejdk8
 
