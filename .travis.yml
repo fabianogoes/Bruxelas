@@ -6,16 +6,7 @@ jdk:
  before_script:
   - "echo execute before"
 
-stages:
-  - build
-  - test
-  - deploy
-
-testing:
-  script:
-    - "echo execute testing"
-    - ./mvnbuild
-  stage: test
-  only:
-    - branches  
+script:
+  - "echo execute testing"
+  - ./mvnbuild
 
