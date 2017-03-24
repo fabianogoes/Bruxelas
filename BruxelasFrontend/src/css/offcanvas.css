@@ -9,10 +9,19 @@ body {
 body {
   padding-top: 80px;
 }
-footer {
-  padding: 30px 0;
+.footer {
+  padding: 5px 15px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(137, 167, 108, 0.76);
+  color: white;
 }
 
+.footer > p {
+	margin-bottom: 0px;
+}
 /*
  * Off Canvas
  * --------------------------------------------------
