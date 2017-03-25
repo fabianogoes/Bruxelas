@@ -79,7 +79,7 @@
 								<configuration>
 									<tasks>
 										<echo>Using env.test.properties</echo>
-										<copy file="src/main/resources/application-dev.properties"
+										<copy file="src/main/resources/application-test.properties"
 											tofile="${project.build.outputDirectory}/env.properties" />
 									</tasks>
 								</configuration>

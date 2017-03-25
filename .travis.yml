@@ -4,7 +4,8 @@ before_install:
   - cd BruxelasBackend/
 
 script:
-  - mvn clean test -Ptest
+  - mvn clean 
+  - mvn test -Ptest
 
 jdk:
  - oraclejdk8
