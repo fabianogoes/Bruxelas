@@ -4,8 +4,7 @@ before_install:
   - cd BruxelasBackend/
 
 script:
-  - mvn clean 
-  - mvn test -Ptest
+  - mvn test -Dspring.profiles.active=test
 
 jdk:
  - oraclejdk8
