@@ -13,19 +13,19 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @Configuration
 @EnableJpaRepositories({"com.bruxelas.repositories"})
 @ComponentScan("com.bruxelas.entities")
-public class JPAConfigurationProduction implements JPAConfiguration {
+public class JPAConfigurationProd implements JPAConfiguration {
 
     @Bean(destroyMethod = "close")
     public DataSource dataSource() {
-    	System.out.println( "<<< Profile = dev >>>" );
-		String host = System.getenv().get("OPENSHIFT_MYSQL_DB_HOST") == null ? "localhost" : System.getenv().get("OPENSHIFT_MYSQL_DB_HOST");
+    	System.out.println( "<<< Profile = prod >>>" );
+
+    	String host = System.getenv().get("OPENSHIFT_MYSQL_DB_HOST") == null ? "localhost" : System.getenv().get("OPENSHIFT_MYSQL_DB_HOST");
 		String port = System.getenv().get("OPENSHIFT_MYSQL_DB_PORT") == null ? "3306" : System.getenv().get("OPENSHIFT_MYSQL_DB_PORT");
 		String user = System.getenv().get("OPENSHIFT_MYSQL_DB_USERNAME") == null ? "bruxelas" : System.getenv().get("OPENSHIFT_MYSQL_DB_USERNAME");
 		String pass = System.getenv().get("OPENSHIFT_MYSQL_DB_PASSWORD") == null ? "bruxelas" : System.getenv().get("OPENSHIFT_MYSQL_DB_PASSWORD");
 		
 		String database = "bruxelas";
 		String url = "jdbc:mysql://" + host + ":" + port + "/" + database + "?autoReconnect=true&useSSL=false";
-
 		DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
 		dataSourceBuilder.url(url);
 		dataSourceBuilder.username(user);
