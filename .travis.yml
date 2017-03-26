@@ -13,6 +13,7 @@ after_success:
   - git config --global user.name "Travis CI"
   - git add --all
   - git commit -am "Travis change"
+  - git checkout deployci
 
 deploy:
   provider: openshift
