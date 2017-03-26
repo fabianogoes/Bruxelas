@@ -6,7 +6,10 @@ jdk: oraclejdk8
 
 before_install: npm install -g grunt-cli
 install: npm install
-before_script: cd src/main/webapps && grunt build
+before_script: 
+  - pwd 
+  - cd src/main/webapps 
+  - grunt build
 
 after_success:
 #  - cd src/main/webapps
