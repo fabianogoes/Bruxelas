@@ -1,0 +1,207 @@
+<div ng-controller="HomeController as hCtrl">
+
+    <div class="row row-offcanvas row-offcanvas-right">
+
+        <div class="col-xs-12">
+            <div class="panel panel-default talkers">
+              <div class="panel-heading bg-light-greenblue-transparent">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <h3 class="panel-title">Talkers</h3>
+                    </div>
+                    <div class="col-xs-6 text-right visible-less-than-sm">
+                        <div class="dropdown">											
+                            <a href="" style="color:white;" class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1"> 
+                                <li class="dropdown-header">
+                                    <select class="form-control">
+                                            <option>Language</option>
+                                            <option>Any</option>
+                                            <option>English</option>
+                                            <option>Brazilian</option>
+                                        </select>
+                                </li>
+                                <li class="dropdown-header">
+                                    <select class="form-control">
+                                        <option>Week Day</option>
+                                        <option>Any</option>
+                                        <option>Monday</option>
+                                        <option>Tuesday</option>
+                                        <option>Wednesday</option>
+                                        <option>Thursday</option>
+                                        <option>Friday</option>
+                                        <option>Saturday</option>
+                                        <option>Sunday</option>
+                                    </select>
+                                </li>
+                                <li class="dropdown-header">
+                                    <select class="form-control">
+                                        <option>Period</option>
+                                        <option>Any</option>
+                                        <option>Morning</option>
+                                        <option>Afternoon</option>
+                                        <option>Night</option>
+                                    </select>
+                                </li>
+                                    <li class="dropdown-header">
+                                        <select class="form-control">
+                                                <option>Gender</option>
+                                                <option>Any</option>
+                                                <option>Male</option>
+                                                <option>Female</option>
+                                            </select>
+                                    </li>										
+                                    <li class="dropdown-header">
+                                        <select class="form-control">
+                                            <option>Status</option>
+                                            <option>Any</option>
+                                            <option>Avaliable</option>
+                                            <option>Unvaliable</option>
+                                        </select>										
+                                    </li>
+                                    <li class="dropdown-header">
+                                                <button type="button" class="btn btn-primary btn-block">
+                                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                                </button> 
+                                    </li>
+                                </ul>
+                            </div>		
+                        </div>
+                    </div>
+              </div>
+              <div class="panel-body bg-body-panel-default visible-more-than-sm">               
+                    
+                    <form>
+                      <div class="col-md-1">
+                        <label>Filters:</label>
+                      </div>
+                      <div class="col-md-2">
+                        <select class="form-control">
+                          <option>Language</option>
+                          <option>Any</option>
+                          <option>English</option>
+                          <option>Brazilian</option>
+                        </select>
+                      </div> 
+                      <div class="col-md-2">
+                        <select class="form-control">
+                          <option>Week Day</option>
+                          <option>Any</option>
+                          <option>Monday</option>
+                          <option>Tuesday</option>
+                          <option>Wednesday</option>
+                          <option>Thursday</option>
+                          <option>Friday</option>
+                          <option>Saturday</option>
+                          <option>Sunday</option>
+                        </select>
+                      </div>  
+                      <div class="col-md-2">
+                        <select class="form-control">
+                          <option>Period</option>
+                          <option>Any</option>
+                          <option>Morning</option>
+                          <option>Afternoon</option>
+                          <option>Night</option>
+                        </select>
+                      </div>   
+                     <div class="col-md-2">
+                        <select class="form-control">
+                          <option>Gender</option>
+                          <option>Any</option>
+                          <option>Male</option>
+                          <option>Female</option>
+                        </select>
+                      </div>   
+                    <div class="col-md-2">
+                        <select class="form-control">
+                          <option>Status</option>
+                          <option>Any</option>
+                          <option>Avaliable</option>
+                          <option>Unvaliable</option>
+                        </select>
+                      </div>                                                                                     
+                      <div class="col-md-1">
+                         <button type="button" class="btn btn-primary btn-block">
+                           <i class="fa fa-search" aria-hidden="true"></i>
+                         </button> 
+                      </div>
+                    </form>
+
+                    <br/><br/>
+                    <br/> 
+
+							</div>
+						</div>
+							
+            <div class="panel panel-default">
+              <div class="panel-body bg-body-panel-default">
+
+                    <!-- Talker -->
+                    <div class="panel panel-default" ng-repeat="c in hCtrl.connections">
+                      <div class="panel-body">
+                        <div class="media">
+                          <div class="media-left text-center">
+                            <a href>
+                              <img class="media-object talkers-image-circle" ng-src="{{c.photoUrl}}" style="height: 100px" alt="Avatar">
+                            </a>    
+                            <i class="fa fa-star text-yellow" aria-hidden="true"></i>
+                            <i class="fa fa-star text-yellow" aria-hidden="true"></i>
+                            <i class="fa fa-star text-yellow" aria-hidden="true"></i>
+                            <i class="fa fa-star text-yellow" aria-hidden="true"></i>
+                            <i class="fa fa-star text-yellow" aria-hidden="true"></i>                                                    
+                          </div>
+                          <div class="media-body">
+                            <h4 class="media-heading">
+                              <span ng-bind="c.fullname"></span>
+                              <span ng-class="c.nacionality.flagIcon" class="flag-icon pull-right"></span>
+                            </h4>
+                            
+                            <p ng-bind="c.description"></p>
+
+                            <br/>
+
+                            <p class="text-right">
+                              <span class="badge">Language</span>
+                              <span class="badge" ng-repeat="l in c.languages">{{ l.name }}</span>
+                            </p>
+                            
+                          </div>
+                        </div>
+                      </div>  
+                      <div class="panel-footer text-right bg-footer-card">
+                          <span class="label label-danger" style="width: 100px">Unavaliable</span>
+                      </div> 
+                    </div>
+                    <!--// Talker -->             
+ 
+                  </div>
+
+              </div>
+
+          </div><!--/row-->
+
+    </div><!--/.col-xs-12.col-sm-9-->
+
+
+    <div class="panel panel-default menu-sidebar-right menu-sidebar-right-xs">
+
+            <div class="panel-heading bg-light-greenblue-transparent">
+                <h3 class="panel-title">
+                    Connected
+                    <span class="badge pull-right" ng-bind="hCtrl.connections.length">0</span>
+                </h3>
+            </div>
+            <div class="panel-body">
+
+                <div class="list-group" style="height: 100%;overflow: auto;">
+                    <a href class="list-group-item" ng-repeat="c in hCtrl.connections"> {{ c.firstname }} <span ng-class="c.nacionality.flagIcon" class="flag-icon pull-right"></span></a>
+                </div>
+
+            </div>
+
+    </div><!--/.sidebar-offcanvas-->
+
+</div>

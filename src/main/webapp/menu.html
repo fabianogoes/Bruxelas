@@ -1,0 +1,48 @@
+    <nav class="navbar navbar-fixed-top navbar-default navbar-white-green">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" style="color:white;">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href style="padding-top: 10px;">
+            <img src="src/img/favicon.png" style="height: 30px;width: 30px;">
+          </a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+           <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown">
+                <a href class="dropdown-toggle" data-toggle="dropdown" role="button" style="color: #5C953D;"
+                            aria-haspopup="true"   aria-expanded="false">
+                  <i class="fa fa-bell-o" aria-hidden="true"></i>
+                  <span class="badge label-danger">3</span>
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href>AAA Asking Connection</a></li>
+                  <li><a href>BBB Asking Connection</a></li>
+                  <li><a href>CCC Asking Connection</a></li>
+                </ul>
+              </li>              
+              <li class="dropdown">
+                <a href class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: #5C953D;">
+                  {{ sessionCtrl.user.firstname }} <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="dropdown-header">User Profile</li>
+                  <li><a href><i class="fa fa-id-card-o" aria-hidden="true"></i> Profile</a></li>
+                  <li><a href><i class="fa fa-handshake-o" aria-hidden="true"></i> Connections</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li class="dropdown-header">System Abount</li>
+                  <li><a href><i class="fa fa-info-circle" aria-hidden="true"></i> About</a></li>
+                  <li><a href><i class="fa fa-life-ring" aria-hidden="true"></i> Help</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href><i class="fa fa-sign-out" aria-hidden="true"></i> Sign out</a></li>
+                </ul>
+              </li>
+            </ul>
+        </div><!-- /.nav-collapse -->
+      </div><!-- /.container -->
+    </nav><!-- /.navbar -->
