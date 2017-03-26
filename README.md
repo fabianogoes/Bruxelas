@@ -45,4 +45,15 @@ $ npm install && grunt build
 
 ------
 
+**Openshift Data**
+
+>  WildFly 9 administrator added.  Please make note of these credentials:
+>
+>   Username: adminWa3FYT4
+>   Password: BZrsRpcmSplb
+>   
+>   run 'rhc port-forward bruxelas' to access the web admin area on port 9990.
+
+------   
+
 [![Build Status](https://travis-ci.org/fabianogoes/Bruxelas.svg?branch=master)](https://travis-ci.org/fabianogoes/Bruxelas)

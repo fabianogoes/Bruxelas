@@ -1,11 +1,13 @@
 language: java
-
-before_install:
-  - cd BruxelasBackend/
-
-script:
-  - mvn clean test -B -V
-
-jdk:
- - oraclejdk8
-
+script: mvn clean package -Popenshift
+jdk: oraclejdk8
+deploy:
+  provider: openshift
+  user: fabianogoes@gmail.com
+  password:
+    secure: qqXvyFHX+h7yXdANy05TetwXVpA1MEoM13WJgyhIO+TjE5lHmFb/fC5mA/H5wlXTv6oUhxlkDFnier1Umpbnme7l4VLCLHjf++2PmSaUIzVKcpktaNWv68eQgazY0FZAV0ngDdy6B0unGrjkJmc5VjG+nLdDBvrfURGhAbdAoD7/9T/YTgu2TSLz2o4f2Tgu/RGoVgfNNf91ACDmisaSm5XZpzE1ac53bR27sZzL6DZOJq/eSO285NyJVktURICXU+NBEJakb+2n/edmvYW+bVdPAcLHGcMH7D3JO+GLbz4V8vW1Y6dnHuOL5/gaefUUSY6xix4s79KHueR7Cxe824MxN71ineEsaIrenYs0NPylQnzD6enDkDPppruZdxiWNPT4i6VyG3RL642qXiGY8vn9bJd8uxkbnLyjDwGA44r12WLBKoJUftGKaBvaJk341Aa9HQsfdOk5p77TWn3BefAXZtHTzzqPIELcbcRlm8+cbBo8Ra17HZJw/ZhXzC+uHtuG9tjHiDLsrQAIyWpWI+Q4SiAWaHUSCLrXPytHOMcwE3mFmn81eHkBGzkYvJbxLnzFVRJgKOBosSlpR59HHiAu4BMfXE5zb56if0HiaRaCq0vtGZZsqPXxtMROS9wobboqYZKPOPJuNC09r1No4fh1ehtASiL+ExD7x9tqVbI=
+  app: bruxelas
+  domain: fabianoggoes
+  on:
+    repo: fabianogoes/Bruxelas
+    branch: deployci
