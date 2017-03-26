@@ -1,6 +1,19 @@
 language: java
+
 script: mvn clean package -Popenshift
+
 jdk: oraclejdk8
+
+after_success:
+#  - grunt build
+#  - cd dist
+  - git init
+  - git config --global push.default simple
+  - git config --global user.email "travis@localhost.localdomain"
+  - git config --global user.name "Travis CI"
+  - git add --all
+  - git commit -am "Travis change"
+
 deploy:
   provider: openshift
   user: fabianogoes@gmail.com
