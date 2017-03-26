@@ -11,6 +11,7 @@ after_success:
   - git config --global push.default simple
   - git config --global user.email "travis@localhost.localdomain"
   - git config --global user.name "Travis CI"
+  - git add .dpl/
   - git add --all
   - git commit -am "Travis change"
 
