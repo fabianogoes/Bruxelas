@@ -44,7 +44,7 @@ public class DashRestControllerTest {
     
 	@Test
 	public void testIndex() throws Exception{
-        ResultActions resultActions = mockMvc.perform(get("/"))
+        ResultActions resultActions = mockMvc.perform(get("/api/"))
         		.andExpect(status().isOk())
         		.andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE));
         

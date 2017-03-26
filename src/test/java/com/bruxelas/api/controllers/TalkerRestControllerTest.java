@@ -65,7 +65,7 @@ public class TalkerRestControllerTest {
 
 		when(this.talkerServiceMock.save(talkerAny)).thenReturn(talkerAny);
 		
-		ResultActions resultActions = mockMvc.perform(post("/talker")
+		ResultActions resultActions = mockMvc.perform(post("/api/talker")
 				.contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
 				.content(talkerAsJson))
         		.andExpect(status().isOk())
@@ -88,7 +88,7 @@ public class TalkerRestControllerTest {
 		
 		when(this.talkerServiceMock.findAll()).thenReturn(talkersMock);
 		
-		ResultActions resultActions = mockMvc.perform(get("/talker"))
+		ResultActions resultActions = mockMvc.perform(get("/api/talker"))
 				.andExpect(status().isOk())
         		.andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE));
 		

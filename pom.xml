@@ -91,7 +91,7 @@
 						<version>2.1.1</version>
 						<configuration>
 							<outputDirectory>deployments</outputDirectory>
-							<warName>bruxelas</warName>
+							<warName>ROOT</warName>
 						</configuration>
 					</plugin>
 				</plugins>

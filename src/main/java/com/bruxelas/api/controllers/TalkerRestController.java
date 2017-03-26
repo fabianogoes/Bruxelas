@@ -19,7 +19,7 @@ import com.bruxelas.services.TalkerService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
-@RequestMapping("/talker")
+@RequestMapping("/api/talker")
 public class TalkerRestController {
 
 	private static final Logger logger = LoggerFactory.getLogger(TalkerRestController.class);
