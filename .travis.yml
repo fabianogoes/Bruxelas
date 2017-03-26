@@ -23,4 +23,4 @@ deploy:
   domain: fabianoggoes
   on:
     repo: fabianogoes/bruxelas
-    branch: master
+    branch: deployci
