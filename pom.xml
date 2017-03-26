@@ -5,7 +5,7 @@
 
 	<groupId>com.bruxelas</groupId>
 	<artifactId>Bruxelas</artifactId>
-	<version>1.0.20170326.2</version>
+	<version>1.0.20170326.3</version>
 	<packaging>war</packaging>
 
 	<name>Bruxelas</name>

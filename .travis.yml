@@ -12,5 +12,5 @@ deploy:
   app: bruxelas
   domain: fabianoggoes
   on:
-    repo: fabianogoes/Bruxelas
+    repo: fabianogoes/bruxelas
     branch: deployci
