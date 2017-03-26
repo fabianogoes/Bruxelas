@@ -28,3 +28,4 @@ BruxelasFrontend/node_modules
 .classpath
 .project
 .settings/
+.openshift/
