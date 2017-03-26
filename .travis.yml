@@ -7,7 +7,7 @@ jdk: oraclejdk8
 after_success:
 #  - grunt build
 #  - cd dist
-#  - git init
+  - git init
   - git config --global push.default simple
   - git config --global user.email "travis@localhost.localdomain"
   - git config --global user.name "Travis CI"
