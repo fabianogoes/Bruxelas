@@ -4,8 +4,10 @@ script: mvn clean package -Popenshift
 
 jdk: oraclejdk8
 
-before_install: npm install -g grunt-cli
-install: npm install
+install: 
+  - npm install -g grunt-cli
+  - npm install grunt --save-dev
+  - npm install update
 
 before_script: 
   - pwd 
