@@ -40,3 +40,7 @@ deploy:
   domain: fabianoggoes
   on:
     repo: fabianogoes/bruxelas
+
+branches:
+  only:
+  - master    
