@@ -4,7 +4,9 @@ script: mvn clean package -Popenshift
 
 jdk: oraclejdk8
 
-#after_success:
+after_success:
+  - cd src/main/webapps
+  - npm install && grunt build
 #  - grunt build
 #  - cd dist
 #  - git init
