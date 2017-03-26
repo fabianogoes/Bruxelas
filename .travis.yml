@@ -1,6 +1,9 @@
 language: java
+
 script: mvn clean package -Popenshift
+
 jdk: oraclejdk8
+
 deploy:
   provider: openshift
   user: fabianogoes@gmail.com

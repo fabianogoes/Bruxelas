@@ -24,3 +24,7 @@ BruxelasBackend/mvnw.cmd
 BruxelasFrontend/.DS_Store
 BruxelasBackend/.DS_Store
 BruxelasFrontend/node_modules
+/target/
+.classpath
+.project
+.settings/
