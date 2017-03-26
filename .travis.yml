@@ -30,7 +30,8 @@ after_success:
   - git add .dpl/
   - git add --all
   - git commit -am "Travis change"
-  - git push origin master --force
+  - git remote -v
+  - git push openshift HEAD --force
 
 deploy:
   provider: openshift
