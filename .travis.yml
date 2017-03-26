@@ -1,26 +1,12 @@
 language: java
-
 script: mvn clean package -Popenshift
-
 jdk: oraclejdk8
-
-after_success:
-#  - grunt build
-#  - cd dist
-  - git init
-  - git config --global push.default simple
-  - git config --global user.email "travis@localhost.localdomain"
-  - git config --global user.name "Travis CI"
-  - git add --all
-  - git commit -am "Travis change"
-
 deploy:
   provider: openshift
   user: fabianogoes@gmail.com
   password:
-    secure: qqXvyFHX+h7yXdANy05TetwXVpA1MEoM13WJgyhIO+TjE5lHmFb/fC5mA/H5wlXTv6oUhxlkDFnier1Umpbnme7l4VLCLHjf++2PmSaUIzVKcpktaNWv68eQgazY0FZAV0ngDdy6B0unGrjkJmc5VjG+nLdDBvrfURGhAbdAoD7/9T/YTgu2TSLz2o4f2Tgu/RGoVgfNNf91ACDmisaSm5XZpzE1ac53bR27sZzL6DZOJq/eSO285NyJVktURICXU+NBEJakb+2n/edmvYW+bVdPAcLHGcMH7D3JO+GLbz4V8vW1Y6dnHuOL5/gaefUUSY6xix4s79KHueR7Cxe824MxN71ineEsaIrenYs0NPylQnzD6enDkDPppruZdxiWNPT4i6VyG3RL642qXiGY8vn9bJd8uxkbnLyjDwGA44r12WLBKoJUftGKaBvaJk341Aa9HQsfdOk5p77TWn3BefAXZtHTzzqPIELcbcRlm8+cbBo8Ra17HZJw/ZhXzC+uHtuG9tjHiDLsrQAIyWpWI+Q4SiAWaHUSCLrXPytHOMcwE3mFmn81eHkBGzkYvJbxLnzFVRJgKOBosSlpR59HHiAu4BMfXE5zb56if0HiaRaCq0vtGZZsqPXxtMROS9wobboqYZKPOPJuNC09r1No4fh1ehtASiL+ExD7x9tqVbI=
+    secure: l+ptyyjFXP1l2BVdhlkq1qoF6gTkkuhXrOsAWYhZO76kO+sygxBf1LW753FEfW73be52rII78rWBZuA0UTX9Llzpb/x2Hw0nJUAqRaj6mW08ZuNT2TItQKMkP2//eGZ1Rhxt/QD6hN7heoM16AxsDcQl1FUgvb0NopWH/cLsmZWdArdkm6JB9swYoXqVZXzyQGxo4SgQzf1XavazQjy0YTeenh96NpCGX0b6btlQdgN6LB9Kzk6Vemlqia2ntyKKV1R0gU8uiFmrh8Kva5tV5GdN49gJt+vRbSF6toq0a0Tl5sL69lOd3J8WZkGWhyhaC8O3Q0N5Ekw459QUU9YhtvktYBAeAFhkqOxs9/TQAvQifnI2dBiV72DZoM8bSl1XJaxmiqubuq0Es4NLaY76l4gdOrYhyj5v/eXXx8cpV6me41n/ebPrX6KKlsr8FKacIVFiT3GSXHRY+a410VAX9GU2K0ouToSIFNCTJYgah3JgoQVyEzGFgGrfimhm0b2NHeeA+PbF3P5QFJDmdgc0i7Fk1C+Ex+Q5ZJDWDFziBuf3xzOJcWzok+yX0MwxgW9mbIX1V9TMSJMl9pGHltg01vp7W2li6SaRTkxoG88LmNiMCQl/O8IQ/qsD2LdCYNUvjZogW8D6Oe/aXntgRN4zCDR4vwpsIDKATgjIlPA6iYc=
   app: bruxelas
   domain: fabianoggoes
   on:
     repo: fabianogoes/bruxelas
-    branch: deployci
