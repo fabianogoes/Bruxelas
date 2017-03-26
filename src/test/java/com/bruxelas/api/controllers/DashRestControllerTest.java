@@ -44,7 +44,7 @@ public class DashRestControllerTest {
     
 	@Test
 	public void testIndex() throws Exception{
-        ResultActions resultActions = mockMvc.perform(get("/api/"))
+        ResultActions resultActions = mockMvc.perform(get("/api"))
         		.andExpect(status().isOk())
         		.andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE));
         
@@ -53,7 +53,7 @@ public class DashRestControllerTest {
         MockHttpServletResponse response = resultActions.andReturn().getResponse();
         String welcome = new ObjectMapper().readValue(response.getContentAsString(), String.class);
         
-        assertThat(welcome).isEqualTo("Welcome Bruxelas Project");
+        assertThat(welcome).isEqualTo("Welcome Bruxelas Project 1.0");
 	}
 	
 }
