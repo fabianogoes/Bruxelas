@@ -6,15 +6,18 @@ jdk: oraclejdk8
 
 install: 
   - npm install -g grunt-cli
-  - npm install grunt --save-dev
-  - npm install update
+#  - npm install grunt --save-dev
+#  - npm install update
 
-before_script: 
+before_script:
+  - echo '>>> before_script <<<' 
   - pwd 
-  - cd bruxelas/src/main/webapps 
-  - grunt build
+#  - cd bruxelas/src/main/webapps 
+#  - grunt build
 
 after_success:
+  - echo '>>> after_success <<<'
+  - pwd  
 #  - cd src/main/webapps
 #  - npm install && grunt build
 #  - grunt build
