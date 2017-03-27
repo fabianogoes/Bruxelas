@@ -53,7 +53,7 @@ public class DashRestControllerTest {
         MockHttpServletResponse response = resultActions.andReturn().getResponse();
         String welcome = new ObjectMapper().readValue(response.getContentAsString(), String.class);
         
-        assertThat(welcome).isEqualTo("Welcome Bruxelas Project 1.0.20170326");
+        assertThat(welcome).isEqualTo("Welcome Bruxelas Project 1.0.20170327");
 	}
 	
 }
