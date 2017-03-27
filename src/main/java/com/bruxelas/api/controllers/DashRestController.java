@@ -22,7 +22,7 @@ public class DashRestController {
 		logger.info( "get()..." );
 		ResponseEntity<String> responseEntity = null;
 		try {
-			String welcome =  "Welcome Bruxelas Project 1.0.20170326";
+			String welcome =  "Welcome Bruxelas Project 1.0.20170327";
 			HttpHeaders responseHeaders = new HttpHeaders();
 			String usuariosJson = new ObjectMapper().writeValueAsString(welcome);
 			responseEntity = new ResponseEntity<String>(usuariosJson, responseHeaders, HttpStatus.OK);
