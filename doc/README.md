@@ -10,4 +10,4 @@
 
 ### User x Connection   
 
-![User x Connection](user-x-connection-1.0.JPG)
+![Talker x Connection](talker-x-connection.jpg)
