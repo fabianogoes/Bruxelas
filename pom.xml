@@ -4,12 +4,9 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.bruxelas</groupId>
-	<artifactId>Bruxelas</artifactId>
+	<artifactId>bruxelas</artifactId>
 	<version>1.0.20170327</version>
 	<packaging>war</packaging>
-
-	<name>Bruxelas</name>
-	<description>Demo project for Spring Boot</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -81,11 +78,26 @@
 	</dependencies>
 
 	<build>
+		<finalName>bruxelas</finalName>
 		<plugins>
+			<!-- <plugin> -->
+			<!-- <groupId>org.springframework.boot</groupId> -->
+			<!-- <artifactId>spring-boot-maven-plugin</artifactId> -->
+			<!-- </plugin> -->
+
 			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
+				<groupId>org.wildfly.plugins</groupId>
+				<artifactId>wildfly-maven-plugin</artifactId>
+				<version>1.1.0.Alpha5</version>
+				<configuration>
+					<hostname>127.0.0.1</hostname>
+					<port>9990</port>
+					<username>admin</username>
+					<password>admin</password>
+					<name>bruxelas.war</name>
+				</configuration>
 			</plugin>
+
 		</plugins>
 	</build>
 
