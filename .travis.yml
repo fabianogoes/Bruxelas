@@ -18,10 +18,6 @@ before_script:
 after_success:
   - echo '>>> after_success <<<'
   - pwd  
-#  - cd src/main/webapps
-#  - npm install && grunt build
-#  - grunt build
-#  - cd dist
   - rm -rf .git/
   - git init
   - git config --global push.default simple
@@ -30,8 +26,7 @@ after_success:
   - git add .dpl/
   - git add --all
   - git commit -am "Travis change"
-  - git remote -v
-  - git push openshift HEAD --force
+  - git push --set-upstream ssh://58d73dad89f5cf4b72000179@bruxelas-fabianoggoes.rhcloud.com/~/git/bruxelas.git/ master
 
 deploy:
   provider: openshift
