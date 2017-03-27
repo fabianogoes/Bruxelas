@@ -44,7 +44,7 @@ public class TalkerRestControllerTest {
 	private MockMvc mockMvc;
 	
 	@InjectMocks
-	private TalkerRestController DashRestControllerMock;
+	private TalkerRestController talkerRestControllerMock;
 	
 	@Mock
 	private TalkerService talkerServiceMock;
@@ -55,7 +55,7 @@ public class TalkerRestControllerTest {
 	@Before
     public void setup() throws Exception {
 		MockitoAnnotations.initMocks(this);
-		this.mockMvc = MockMvcBuilders.standaloneSetup(DashRestControllerMock).build();
+		this.mockMvc = MockMvcBuilders.standaloneSetup(talkerRestControllerMock).build();
     }   
     
 	@Test
