@@ -4,29 +4,28 @@ script: mvn clean package -Popenshift
 
 jdk: oraclejdk8
 
-install: 
-  - npm install -g grunt-cli
+#install: 
+#  - npm install -g grunt-cli
 #  - npm install grunt --save-dev
 #  - npm install update
 
-before_script:
-  - echo '>>> before_script <<<' 
-  - pwd 
+#before_script:
+#  - echo '>>> before_script <<<' 
+#  - pwd 
 #  - cd bruxelas/src/main/webapps 
 #  - grunt build
 
-after_success:
-  - echo '>>> after_success <<<'
-  - pwd  
-  - rm -rf .git/
-  - git init
-  - git config --global push.default simple
-  - git config --global user.email "travis@localhost.localdomain"
-  - git config --global user.name "Travis CI"
-  - git add .dpl/
-  - git add --all
-  - git commit -am "Travis change"
-  - git push --set-upstream ssh://58d73dad89f5cf4b72000179@bruxelas-fabianoggoes.rhcloud.com/~/git/bruxelas.git/ master
+#after_success:
+#  - echo '>>> after_success <<<'
+#  - rm -rf .git/
+#  - git init
+#  - git config --global push.default simple
+#  - git config --global user.email "travis@localhost.localdomain"
+#  - git config --global user.name "Travis CI"
+#  - git add .dpl/
+#  - git add --all
+#  - git commit -am "Travis change"
+#  - git push --set-upstream ssh://58d73dad89f5cf4b72000179@bruxelas-fabianoggoes.rhcloud.com/~/git/bruxelas.git/ master
 
 deploy:
   provider: openshift
