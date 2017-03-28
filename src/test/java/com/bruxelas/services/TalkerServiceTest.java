@@ -44,7 +44,7 @@ public class TalkerServiceTest {
 	}	
 	
 	@Test
-	public void testSaveTalker() throws Exception{
+	public void testSave() throws Exception{
 		Talker talkerAny = new Talker(null, anyString());
 
 		when(this.talkerRepositoryMock.save(talkerAny)).thenReturn(talkerAny);
@@ -62,7 +62,7 @@ public class TalkerServiceTest {
 		
 		when(this.talkerRepositoryMock.findAll()).thenReturn(talkersMock);
 		
-		List<Talker> talkersReponse = (List<Talker>) this.talkerRepositoryMock.findAll();
+		List<Talker> talkersReponse = (List<Talker>) this.talkerServiceMock.findAll();
 		assertNotNull("[talkersReponse] should not be null", talkersReponse);
 		assertEquals("[talkersMock] should be equals to talkersReponse", talkersMock, talkersReponse);
 		
