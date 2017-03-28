@@ -25,11 +25,11 @@ body{
 
 @media (min-width: 992px){
 	.menu-sidebar-right{
-		height: -o-calc(100% - 85px); /* opera */
-		height: -webkit-calc(100% - 85px); /* google, safari */
-		height: -moz-calc(100% - 85px); /* firefox */
+		height: -o-calc(100% - 95px); /* opera */
+		height: -webkit-calc(100% - 95px); /* google, safari */
+		height: -moz-calc(100% - 95px); /* firefox */
 		position: fixed;
-		right: 0;
+		right: 5px;
 		top: 55px;
 		bottom: 35px;
 		width: 200px;
@@ -38,14 +38,14 @@ body{
 	.talkers{
 		top: 55px;
 		right: 215px;
-		left: 15px;
+		left: 5px;
 		position: fixed;
-		/*z-index: 1050;*/
+		z-index: 2;
 	}
 	
 	.talkers-container{
 		margin-right: 215px; 
-		margin-left: 15px
+		margin-left: 5px
 	}
 
 	body {
