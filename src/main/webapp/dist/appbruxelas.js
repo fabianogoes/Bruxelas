@@ -10,10 +10,23 @@ appbruxelas.config(['$routeProvider', '$httpProvider', function($routeProvider, 
 				.when('/', { templateUrl:'home.html'});             
  
 }]);  
+appbruxelas.factory('ConnectionService', ['$http', function($http) {
+
+    var _findByUser = function(userId) {
+        return $http.get('http/connections-by-user.json');
+    }
+
+    return {
+
+        findByUser : _findByUser 
+
+    }
+
+}]);
 appbruxelas.factory('SessionService', ['$http', function($http) {
 
     var _getSession = function() {
-        return $http.get('http://127.0.0.1:8081/http/user-session.json');
+        return $http.get('http/user-session.json');
     }
 
     return {
@@ -23,7 +36,7 @@ appbruxelas.factory('SessionService', ['$http', function($http) {
     }
 
 }]);
-appbruxelas.controller('HomeController', ['$http', function($http) {
+appbruxelas.controller('HomeController', ['ConnectionService', function(ConnectionService) {
 
     var self = this;
 
@@ -32,7 +45,7 @@ appbruxelas.controller('HomeController', ['$http', function($http) {
     }
 
     self.findConnectionsByUser = function(userId) {
-        $http.get('http/connections-by-user.json').then(function(resp) {
+        ConnectionService.findByUser(userId).then(function(resp) {
             self.connections = resp.data;
         }, function(error) {
             console.log(error);
