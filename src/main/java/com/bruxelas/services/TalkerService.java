@@ -16,17 +16,27 @@ public class TalkerService {
 	private static final Logger logger = LoggerFactory.getLogger(TalkerService.class);
 	
 	@Autowired
-	private TalkerRepository talkerRepository;
+	private TalkerRepository repository;
 	
 	public Talker save(Talker talker) {
 		logger.info("save("+talker+")");
-		talker = this.talkerRepository.save(talker);
+		talker = this.repository.save(talker);
 		return talker;
 	}
 
 	public List<Talker> findAll() {
 		logger.info("findAll()");
-		return (List<Talker>) this.talkerRepository.findAll();
+		return (List<Talker>) this.repository.findAll();
+	}
+
+	public Talker findOne(long id) {
+		logger.info("findOne("+id+")");
+		return this.repository.findOne(id);
+	}
+
+	public void delete(long id) {
+		logger.info("delete("+id+")");
+		this.repository.delete(id);
 	}
 
 }

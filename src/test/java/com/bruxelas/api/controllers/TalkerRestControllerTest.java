@@ -2,6 +2,8 @@ package com.bruxelas.api.controllers;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.mockito.Matchers.anyLong;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -44,7 +46,7 @@ public class TalkerRestControllerTest {
 	private MockMvc mockMvc;
 	
 	@InjectMocks
-	private TalkerRestController DashRestControllerMock;
+	private TalkerRestController talkerRestControllerMock;
 	
 	@Mock
 	private TalkerService talkerServiceMock;
@@ -55,7 +57,7 @@ public class TalkerRestControllerTest {
 	@Before
     public void setup() throws Exception {
 		MockitoAnnotations.initMocks(this);
-		this.mockMvc = MockMvcBuilders.standaloneSetup(DashRestControllerMock).build();
+		this.mockMvc = MockMvcBuilders.standaloneSetup(talkerRestControllerMock).build();
     }   
     
 	@Test
@@ -99,4 +101,34 @@ public class TalkerRestControllerTest {
 		
 		verify(this.talkerServiceMock, times(1)).findAll();
 	}
+	
+	@Test
+	public void testFindOne() throws Exception{
+		Talker talkerMock = new Talker(1L, "teste");
+		
+		when(this.talkerServiceMock.findOne(anyLong())).thenReturn(talkerMock);
+		
+		ResultActions resultActions = mockMvc.perform(get("/api/talker/"+anyLong()))
+				.andExpect(status().isOk())
+        		.andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE));
+		
+		MockHttpServletResponse response = resultActions.andReturn().getResponse();
+		Talker talkerResponse = new ObjectMapper().readValue(response.getContentAsString(), Talker.class);
+		assertNotNull("[talkerResponse] should not be null", talkerResponse);
+		assertEquals("[talkerMock] should be equals to [talkerResponse]", talkerMock, talkerResponse);
+		
+		verify(this.talkerServiceMock, times(1)).findOne(anyLong());
+	}
+	
+	@Test
+	public void testDelete() throws Exception{
+		doNothing().when(this.talkerServiceMock).delete(anyLong());
+		
+		mockMvc.perform(get("/api/talker/delete/"+anyLong()))
+				.andExpect(status().isOk())
+				.andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE));
+		
+		verify(this.talkerServiceMock, times(1)).delete(anyLong());
+	}
+	
 }
