@@ -2,7 +2,6 @@ package com.bruxelas.services;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -23,6 +22,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.bruxelas.BruxelasApplication;
+import com.bruxelas.api.builders.TalkerBuilder;
+import com.bruxelas.api.helpers.RandomValueGeneratorHelper;
+import com.bruxelas.entities.NacionalityType;
 import com.bruxelas.entities.Talker;
 import com.bruxelas.repositories.TalkerRepository;
 
@@ -45,7 +47,11 @@ public class TalkerServiceTest {
 	
 	@Test
 	public void testSave() throws Exception{
-		Talker talkerAny = new Talker(null, anyString());
+		Talker talkerAny = new TalkerBuilder()
+				.withId(null)
+				.withName(RandomValueGeneratorHelper.anyString())
+				.withNacionality(NacionalityType.BRAZILIAN)
+				.build();
 
 		when(this.talkerRepositoryMock.save(talkerAny)).thenReturn(talkerAny);
 		

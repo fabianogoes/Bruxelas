@@ -33,6 +33,9 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.bruxelas.BruxelasApplication;
+import com.bruxelas.api.builders.TalkerBuilder;
+import com.bruxelas.api.helpers.RandomValueGeneratorHelper;
+import com.bruxelas.entities.NacionalityType;
 import com.bruxelas.entities.Talker;
 import com.bruxelas.services.TalkerService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -62,7 +65,12 @@ public class TalkerRestControllerTest {
     
 	@Test
 	public void testSaveTalker() throws Exception{
-		Talker talkerAny = new Talker(1L, "teste");
+		Talker talkerAny = new TalkerBuilder()
+				.withId(null)
+				.withName(RandomValueGeneratorHelper.anyString())
+				.withNacionality(NacionalityType.BRAZILIAN)
+				.build();
+		
 		String talkerAsJson = this.mapper.writeValueAsString(talkerAny);
 
 		when(this.talkerServiceMock.save(talkerAny)).thenReturn(talkerAny);
@@ -86,7 +94,12 @@ public class TalkerRestControllerTest {
 	
 	@Test
 	public void testFindAll() throws Exception{
-		List<Talker> talkersMock = Arrays.asList(new Talker(1L, "teste"));
+		Talker talkerAny = new TalkerBuilder()
+				.withId(null)
+				.withName(RandomValueGeneratorHelper.anyString())
+				.withNacionality(NacionalityType.BRAZILIAN)
+				.build();
+		List<Talker> talkersMock = Arrays.asList(talkerAny);
 		
 		when(this.talkerServiceMock.findAll()).thenReturn(talkersMock);
 		
@@ -104,9 +117,13 @@ public class TalkerRestControllerTest {
 	
 	@Test
 	public void testFindOne() throws Exception{
-		Talker talkerMock = new Talker(1L, "teste");
+		Talker talkerAny = new TalkerBuilder()
+				.withId(null)
+				.withName(RandomValueGeneratorHelper.anyString())
+				.withNacionality(NacionalityType.BRAZILIAN)
+				.build();
 		
-		when(this.talkerServiceMock.findOne(anyLong())).thenReturn(talkerMock);
+		when(this.talkerServiceMock.findOne(anyLong())).thenReturn(talkerAny);
 		
 		ResultActions resultActions = mockMvc.perform(get("/api/talker/"+anyLong()))
 				.andExpect(status().isOk())
@@ -115,7 +132,7 @@ public class TalkerRestControllerTest {
 		MockHttpServletResponse response = resultActions.andReturn().getResponse();
 		Talker talkerResponse = new ObjectMapper().readValue(response.getContentAsString(), Talker.class);
 		assertNotNull("[talkerResponse] should not be null", talkerResponse);
-		assertEquals("[talkerMock] should be equals to [talkerResponse]", talkerMock, talkerResponse);
+		assertEquals("[talkerMock] should be equals to [talkerResponse]", talkerAny, talkerResponse);
 		
 		verify(this.talkerServiceMock, times(1)).findOne(anyLong());
 	}
