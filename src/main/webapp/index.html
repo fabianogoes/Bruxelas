@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="appbruxelas">
+<html lang="en" data-ng-app="appbruxelas">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,12 +37,12 @@
     <![endif]-->
   </head>
 
-  <body ng-controller="SessionController as sessionCtrl">
-    <div ng-include="'menu.html'"></div>
+  <body data-ng-controller="SessionController as sessionCtrl">
+    <div data-ng-include="'menu.html'"></div>
     <div class="talkers-container">
-        <div ng-view></div>	
+        <div data-ng-view></div>	
     </div>
-    <div ng-include="'footer.html'"></div>
+    <div data-ng-include="'footer.html'"></div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

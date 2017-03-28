@@ -1,4 +1,4 @@
-<div ng-controller="HomeController as hCtrl">
+<div data-ng-controller="HomeController as hCtrl">
 
     <div class="row row-offcanvas row-offcanvas-right">
 
@@ -11,18 +11,19 @@
                     </div>
                     <div class="col-xs-6 text-right visible-less-than-sm">
                         <div class="dropdown">											
-                            <a href="" style="color:white;" class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+                            <a href="" style="color:white;" class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown"
+                             	role="button" aria-haspopup="true" aria-expanded="false" >
                                 <span class="caret"></span>
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1"> 
-                                <li class="dropdown-header">
+                            <ul class="dropdown-menu col-xs-12" aria-labelledby="dropdownMenu1"> 
+                                <li class="">
                                     <select class="form-control">
-                                            <option>Language</option>
-                                            <option>Any</option>
-                                            <option>English</option>
-                                            <option>Brazilian</option>
-                                        </select>
-                                </li>
+                                        <option>Language</option>
+                                        <option>Any</option>
+                                        <option>English</option>
+                                        <option>Brazilian</option>
+                                    </select>
+                                </li> 
                                 <li class="dropdown-header">
                                     <select class="form-control">
                                         <option>Week Day</option>
@@ -62,9 +63,10 @@
                                         </select>										
                                     </li>
                                     <li class="dropdown-header">
-                                                <button type="button" class="btn btn-primary btn-block">
-                                                    <i class="fa fa-search" aria-hidden="true"></i>
-                                                </button> 
+                                       <button type="button" class="btn btn-primary btn-block" 
+                                       style="background-color: #5C953D;">
+                                           <i class="fa fa-search" aria-hidden="true"></i>
+                                       </button> 
                                     </li>
                                 </ul>
                             </div>		
@@ -124,7 +126,8 @@
                         </select>
                       </div>                                                                                     
                       <div class="col-md-1">
-                         <button type="button" class="btn btn-primary btn-block">
+                         <button type="button" class="btn btn-success btn-block"
+                         style="background-color: #5C953D;">
                            <i class="fa fa-search" aria-hidden="true"></i>
                          </button> 
                       </div>
@@ -140,12 +143,12 @@
               <div class="panel-body bg-body-panel-default">
 
                     <!-- Talker -->
-                    <div class="panel panel-default" ng-repeat="c in hCtrl.connections">
+                    <div class="panel panel-default" data-ng-repeat="c in hCtrl.connections">
                       <div class="panel-body">
                         <div class="media">
                           <div class="media-left text-center">
-                            <a href>
-                              <img class="media-object talkers-image-circle" ng-src="{{c.photoUrl}}" style="height: 100px" alt="Avatar">
+                            <a href="">
+                              <img class="media-object talkers-image-circle" data-ng-src="{{c.photoUrl}}" style="height: 100px" alt="Avatar">
                             </a>    
                             <i class="fa fa-star text-yellow" aria-hidden="true"></i>
                             <i class="fa fa-star text-yellow" aria-hidden="true"></i>
@@ -155,17 +158,17 @@
                           </div>
                           <div class="media-body">
                             <h4 class="media-heading">
-                              <span ng-bind="c.fullname"></span>
-                              <span ng-class="c.nacionality.flagIcon" class="flag-icon pull-right"></span>
+                              <span data-ng-bind="c.fullname"></span>
+                              <i data-ng-class="c.nacionality.flagIcon" class="flag-icon pull-right"></i>
                             </h4>
                             
-                            <p ng-bind="c.description"></p>
+                            <p data-ng-bind="c.description"></p>
 
                             <br/>
 
                             <p class="text-right">
                               <span class="badge">Language</span>
-                              <span class="badge" ng-repeat="l in c.languages">{{ l.name }}</span>
+                              <span class="badge" data-ng-repeat="l in c.languages">{{ l.name }}</span>
                             </p>
                             
                           </div>
@@ -191,13 +194,15 @@
             <div class="panel-heading bg-light-greenblue-transparent">
                 <h3 class="panel-title">
                     Connected
-                    <span class="badge pull-right" ng-bind="hCtrl.connections.length">0</span>
+                    <span class="badge pull-right" data-ng-bind="hCtrl.connections.length">0</span>
                 </h3>
             </div>
             <div class="panel-body">
 
                 <div class="list-group" style="height: 100%;overflow: auto;">
-                    <a href class="list-group-item" ng-repeat="c in hCtrl.connections"> {{ c.firstname }} <span ng-class="c.nacionality.flagIcon" class="flag-icon pull-right"></span></a>
+                    <a href="" class="list-group-item" data-ng-repeat="c in hCtrl.connections"> 
+                    	{{ c.firstname }} <span data-ng-class="c.nacionality.flagIcon" class="flag-icon pull-right"></span>
+                    	</a>
                 </div>
 
             </div>
