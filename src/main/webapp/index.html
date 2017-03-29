@@ -39,7 +39,7 @@
 
   <body data-ng-controller="SessionController as sessionCtrl">
     <div data-ng-include="'menu.html'"></div>
-    <div class="talkers-container">
+    <div>
         <div data-ng-view></div>	
     </div>
     <div data-ng-include="'footer.html'"></div>
@@ -56,6 +56,7 @@
     <script src="node_modules/angular/angular.min.js"></script>
     <script src="node_modules/angular-route/angular-route.min.js"></script>
     <script src="dist/appbruxelas.min.js"></script> 
+<!--     <script src="src/js/controllers/talker-crud.controller.js"></script>  -->
     <script src="src/js/controllers/session.controller.js"></script>
   </body>
 </html>

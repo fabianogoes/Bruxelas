@@ -7,9 +7,10 @@ var appbruxelas = angular.module('appbruxelas', ['ngRoute']);
 appbruxelas.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider) {
 
 			$routeProvider
-				.when('/', { templateUrl:'home.html'});             
+				.when('/', { templateUrl:'home.html'})             
+				.when('/profile', { templateUrl:'form-talker.html'});             
  
-}]);  
+}]);  	
 appbruxelas.factory('ConnectionService', ['$http', function($http) {
 
     var _findByUser = function(userId) {
@@ -69,4 +70,21 @@ appbruxelas.controller('SessionController', ['SessionService', function(SessionS
 
     self.init();
 
+}]);
+appbruxelas.controller('TalkerCRUDController', ['$http', function($http) {
+
+    var self = this;
+
+    self.languages = [{}];
+    
+    self.addLanguage = function(){
+    	if(self.languages.lenght >= 7){
+    		return;
+    	}
+    	self.languages.push(new Object());
+    }
+    
+    self.popLanguages = function(i){
+    	self.languages.splice(i, 1);
+    }
 }]);

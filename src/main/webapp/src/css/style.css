@@ -19,6 +19,7 @@ body{
 	/*background-color: #5C953D;*/
 	/*background-color: #f5f5f5;*/
 	color: black;
+	background-color: white;
 	border-bottom-color: #5C953D;
 	border-top-color: #5C953D;
 }
@@ -48,7 +49,7 @@ body{
 		margin-left: 5px
 	}
 
-	body {
+	.body-dash {
 		padding-top: 190px;
 	}
 	
@@ -65,7 +66,7 @@ body{
 	.menu-sidebar-right-xs{
 		display:  none !important;
 	}
-	body {
+	.body-dash {
 		padding-top: 55px;
 	}
 
@@ -99,4 +100,33 @@ body{
 
 .talkers-image-circle{
 	border-radius: 50px;
+	height: 100px;
+}
+
+.center-object{
+  height: 100%;
+  min-height: 100%;
+  /* habilita o flex nos filhos diretos */
+  display: -ms-flex;
+  display: -webkit-flex;
+  display: flex;
+
+  /* centraliza na vertical */
+  -ms-align-items: center;
+  -webkit-align-items: center;
+  align-items: center;
+
+  /* centraliza na horizontal */
+  -ms-justify-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+.padding-top-dif-menu-5{
+	padding-top: 55px;
+}
+
+.padding-left-right-5{
+	padding-left: 5px;
+	padding-right: 15px;
 }

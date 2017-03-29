@@ -58,4 +58,4 @@ http://bruxelas-fabianoggoes.rhcloud.com/
 
 ------   
 
-[![Build Status](https://travis-ci.org/fabianogoes/Bruxelas.svg?branch=master)](https://travis-ci.org/fabianogoes/Bruxelas)
+[![Build Status](https://travis-ci.org/fabianogoes/bruxelas.svg?branch=master)](https://travis-ci.org/fabianogoes/bruxelas)
