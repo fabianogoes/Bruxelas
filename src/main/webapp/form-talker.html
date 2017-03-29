@@ -1,0 +1,106 @@
+<div class="container padding-top-dif-menu-5" data-ng-controller="TalkerCRUDController as tcc">
+	<div class="panel panel-warning">
+		<div class="panel-body">
+			
+			<div class="row center-object">
+			
+				<div class="col-md-2 text-center">
+					<img alt="" src="src/img/default-avatar.jpg" class="img-responsive img-circle">
+				</div>
+				
+				<div class="col-md-10">
+					<div class="panel panel-warning">
+						<div class="panel-body">
+	
+							<div class="row">
+								<div class="col-md-10">
+									<label>Name: </label>
+									<input class="form-control input-sm" placeholder="Fulano de Tal"/>
+								</div>
+								<div class="col-md-2">
+									<label>Birth Date: </label>
+									<input class="form-control input-sm" placeholder="17/02/1995"/>
+								</div>
+							</div>
+							
+							<br>
+							
+							<div class="row">
+								<div class="col-md-4">
+									<label>Nationality: </label>
+									<select class="form-control input-sm">
+										<option>Brasileiro</option>
+									</select>
+								</div>
+								<div class="col-md-4">
+									<label>Living in: </label>
+									<select class="form-control input-sm">
+										<option>Brasil</option>
+									</select>
+								</div>
+								<div class="col-md-4">
+									<label>Native language: </label>
+									<select class="form-control input-sm">
+										<option>Portugu&ecircs</option>
+									</select>
+								</div>
+							</div>
+	
+						</div><!-- <div class="panel-body"> -->
+					</div><!-- <div class="panel panel-warning"> -->
+				</div><!-- <div class="col-md-10"> -->
+				
+			</div><!-- <div class="row"> -->
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="panel panel-warning">
+						<div class="panel-body">
+							<label class="control-label col-md-3 text-center center-object padding-left-right-5">Languages you speak or learn: </label>
+
+							<div class="col-md-8">
+								<div data-ng-repeat="l in tcc.languages" class="col-md-12 center-object padding-left-right-5">
+									<label class="col-md-2 padding-left-right-5">Languange: </label>
+									<div class="col-md-3 padding-left-right-5">
+										<select class="form-control input-xs" data-ng-model="l.description">
+											<option>Portugu&ecircs</option>
+										</select>
+									</div>
+									<label class="col-md-1 padding-left-right-5" 
+											data-ng-show="l.isLearning == true" >Level: </label>
+									<div class="col-md-3 padding-left-right-5" data-ng-model="l.level" 
+										 data-ng-show="l.isLearning == true" >
+										<select class="form-control input-xs">
+											<option>Beginner</option>
+										</select>
+									</div>
+									<div data-ng-show="l.isLearning == false || l.isLearning == undefined" 
+										 class="col-md-4 padding-left-right-5"></div>
+									<label class="col-md-2 padding-left-right-5"> 
+										<input type="checkbox" data-ng-model="l.isLearning"/> Learning 
+									</label>
+									<div class="col-md-1">
+										<button data-ng-disabled="$index == 0" data-ng-click="tcc.popLanguages($index)" 
+												class="btn btn-danger btn-xs">
+											<i class="fa fa-remove"></i> 
+										</button>
+									</div>
+									<br>
+									<br>
+								</div>
+							</div>
+
+							<div class="col-md-1 padding-left-right-5">
+								<button class="btn btn-success bg-dark-green-template" data-ng-click="tcc.addLanguage()"
+										data-ng-disabled="tcc.languages.length >= 7">
+									<i class="fa fa-plus"></i>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>						
+			</div>			
+			
+		</div>
+	</div>
+</div>
