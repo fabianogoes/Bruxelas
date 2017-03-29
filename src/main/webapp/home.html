@@ -1,4 +1,4 @@
-<div data-ng-controller="HomeController as hCtrl">
+<div data-ng-controller="HomeController as hCtrl" class="talkers-container">
 
     <div class="row row-offcanvas row-offcanvas-right">
 
@@ -136,52 +136,54 @@
                     <br/><br/>
                     <br/> 
 
-							</div>
-						</div>
+				</div>
+			</div>
 							
-            <div class="panel panel-default">
-              <div class="panel-body bg-body-panel-default">
-
-                    <!-- Talker -->
-                    <div class="panel panel-default" data-ng-repeat="c in hCtrl.connections">
-                      <div class="panel-body">
-                        <div class="media">
-                          <div class="media-left text-center">
-                            <a href="">
-                              <img class="media-object talkers-image-circle" data-ng-src="{{c.photoUrl}}" style="height: 100px" alt="Avatar">
-                            </a>    
-                            <i class="fa fa-star text-yellow" aria-hidden="true"></i>
-                            <i class="fa fa-star text-yellow" aria-hidden="true"></i>
-                            <i class="fa fa-star text-yellow" aria-hidden="true"></i>
-                            <i class="fa fa-star text-yellow" aria-hidden="true"></i>
-                            <i class="fa fa-star text-yellow" aria-hidden="true"></i>                                                    
-                          </div>
-                          <div class="media-body">
-                            <h4 class="media-heading">
-                              <span data-ng-bind="c.fullname"></span>
-                              <i data-ng-class="c.nacionality.flagIcon" class="flag-icon pull-right"></i>
-                            </h4>
-                            
-                            <p data-ng-bind="c.description"></p>
-
-                            <br/>
-
-                            <p class="text-right">
-                              <span class="badge">Language</span>
-                              <span class="badge" data-ng-repeat="l in c.languages">{{ l.name }}</span>
-                            </p>
-                            
-                          </div>
-                        </div>
-                      </div>  
-                      <div class="panel-footer text-right bg-footer-card">
-                          <span class="label label-danger" style="width: 100px">Unavaliable</span>
-                      </div> 
-                    </div>
-                    <!--// Talker -->             
- 
-                  </div>
-
+            <div class="body-dash">
+	            <div class="panel panel-default">
+	              <div class="panel-body bg-body-panel-default">
+	
+	                    <!-- Talker -->
+	                    <div class="panel panel-default" data-ng-repeat="c in hCtrl.connections">
+	                      <div class="panel-body">
+	                        <div class="media">
+	                          <div class="media-left text-center">
+	                            <a href="">
+	                              <img class="media-object talkers-image-circle" data-ng-src="{{c.photoUrl}}" alt="Avatar">
+	                            </a>    
+	                            <i class="fa fa-star text-yellow" aria-hidden="true"></i>
+	                            <i class="fa fa-star text-yellow" aria-hidden="true"></i>
+	                            <i class="fa fa-star text-yellow" aria-hidden="true"></i>
+	                            <i class="fa fa-star text-yellow" aria-hidden="true"></i>
+	                            <i class="fa fa-star text-yellow" aria-hidden="true"></i>                                                    
+	                          </div>
+	                          <div class="media-body">
+	                            <h4 class="media-heading">
+	                              <span data-ng-bind="c.fullname"></span>
+	                              <i data-ng-class="c.nacionality.flagIcon" class="flag-icon pull-right"></i>
+	                            </h4>
+	                            
+	                            <p data-ng-bind="c.description"></p>
+	
+	                            <br/>
+	
+	                            <p class="text-right">
+	                              <span class="badge">Language</span>
+	                              <span class="badge" data-ng-repeat="l in c.languages">{{ l.name }}</span>
+	                            </p>
+	                            
+	                          </div>
+	                        </div>
+	                      </div>  
+	                      <div class="panel-footer text-right bg-footer-card">
+	                          <span class="label label-danger" style="width: 100px">Unavaliable</span>
+	                      </div> 
+	                    </div>
+	                    <!--// Talker -->             
+	 
+	                  </div>
+	
+	              </div>
               </div>
 
           </div><!--/row-->
