@@ -9,6 +9,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -44,6 +45,23 @@ public class TalkerRestController {
 		return responseEntity;
 	}
 	
+	@RequestMapping(value="/{id}" ,produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<String> get(@PathVariable("id") long id){
+		logger.info( "get("+id+")..." );
+		ResponseEntity<String> responseEntity = null;
+		try {
+			Talker talker = this.talkerService.findOne(id);
+			
+			HttpHeaders responseHeaders = new HttpHeaders();
+			String usuariosJson = new ObjectMapper().writeValueAsString(talker);
+			responseEntity = new ResponseEntity<String>(usuariosJson, responseHeaders, HttpStatus.OK);
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+		}
+		return responseEntity;
+	}
+	
 	@RequestMapping(method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_UTF8_VALUE, produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<String> post(@RequestBody Talker talker){
 		logger.info( "post("+talker+")..." );
@@ -61,5 +79,22 @@ public class TalkerRestController {
 		}
 		return responseEntity;
 	}
+	
+	@RequestMapping(value="/delete/{id}" ,produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<String> delete(@PathVariable("id") long id){
+		logger.info( "delete("+id+")..." );
+		ResponseEntity<String> responseEntity = null;
+		try {
+			this.talkerService.delete(id);
+			
+			HttpHeaders responseHeaders = new HttpHeaders();
+			String usuariosJson = new ObjectMapper().writeValueAsString("Delete["+id+"] OK");
+			responseEntity = new ResponseEntity<String>(usuariosJson, responseHeaders, HttpStatus.OK);
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+		}
+		return responseEntity;
+	}	
 	
 }

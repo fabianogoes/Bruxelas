@@ -1,11 +1,15 @@
-appbruxelas.controller('SessionController', ['$http', function($http) {
+appbruxelas.controller('SessionController', ['SessionService', function(SessionService) {
 
     var self  = this;
 
-    self.user = {};
-    self.user.firstname = 'Diego';
-    self.user.fullname = 'Diego Lirio Damacena Pereira';
-    self.user.nacionality = 'Brazil';
+    self.init = function() {
+        SessionService.getSession().then(function(resp) {
+            self.userLogged = resp.data;
+        }, function(error) {
+            alert(error.data);
+        });
+    }
 
+    self.init();
 
 }]);

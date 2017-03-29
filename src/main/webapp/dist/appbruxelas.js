@@ -11,7 +11,33 @@ appbruxelas.config(['$routeProvider', '$httpProvider', function($routeProvider, 
 				.when('/profile', { templateUrl:'form-talker.html'});             
  
 }]);  	
-appbruxelas.controller('HomeController', ['$http', function($http) {
+appbruxelas.factory('ConnectionService', ['$http', function($http) {
+
+    var _findByUser = function(userId) {
+        return $http.get('http/connections-by-user.json');
+    }
+
+    return {
+
+        findByUser : _findByUser 
+
+    }
+
+}]);
+appbruxelas.factory('SessionService', ['$http', function($http) {
+
+    var _getSession = function() {
+        return $http.get('http/user-session.json');
+    }
+
+    return {
+
+        getSession : _getSession
+
+    }
+
+}]);
+appbruxelas.controller('HomeController', ['ConnectionService', function(ConnectionService) {
 
     var self = this;
 
@@ -20,7 +46,7 @@ appbruxelas.controller('HomeController', ['$http', function($http) {
     }
 
     self.findConnectionsByUser = function(userId) {
-        $http.get('http/connections-by-user.json').then(function(resp) {
+        ConnectionService.findByUser(userId).then(function(resp) {
             self.connections = resp.data;
         }, function(error) {
             console.log(error);
@@ -30,15 +56,19 @@ appbruxelas.controller('HomeController', ['$http', function($http) {
     self.init();
 
 }]);
-appbruxelas.controller('SessionController', ['$http', function($http) {
+appbruxelas.controller('SessionController', ['SessionService', function(SessionService) {
 
     var self  = this;
 
-    self.user = {};
-    self.user.firstname = 'Diego';
-    self.user.fullname = 'Diego Lirio Damacena Pereira';
-    self.user.nacionality = 'Brazil';
+    self.init = function() {
+        SessionService.getSession().then(function(resp) {
+            self.userLogged = resp.data;
+        }, function(error) {
+            alert(error.data);
+        });
+    }
 
+    self.init();
 
 }]);
 appbruxelas.controller('TalkerCRUDController', ['$http', function($http) {
