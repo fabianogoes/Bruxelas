@@ -1,6 +1,6 @@
 package com.bruxelas.api.builders;
 
-import com.bruxelas.entities.NacionalityType;
+import com.bruxelas.entities.Country;
 import com.bruxelas.entities.Talker;
 
 public class TalkerBuilder {
@@ -21,13 +21,18 @@ public class TalkerBuilder {
 		return this;
 	}
 	
-	public TalkerBuilder withNacionality(NacionalityType nacionality){
+	public TalkerBuilder withNacionality(Country nacionality){
 		this.talker.setNacionality(nacionality);
 		return this;
 	}
 	
-	public TalkerBuilder withLivingIn(NacionalityType livingIn){
+	public TalkerBuilder withLivingIn(Country livingIn){
 		this.talker.setLivingIn(livingIn);
+		return this;
+	}
+	
+	public TalkerBuilder withLanguageYouSpeak(Country languageYouSpeak){
+		this.talker.setLivingIn(languageYouSpeak);
 		return this;
 	}
 	
