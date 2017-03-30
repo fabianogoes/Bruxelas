@@ -1,5 +1,8 @@
 package com.bruxelas.services;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +20,10 @@ public class VersionService {
 		return version;
 	}
 
-	public Version save(Version version) {
+	public Version save(String build, String commit) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyymmdd");
+		String buildDate = sdf.format(Calendar.getInstance().getTime());
+		Version version = new Version(null, build, commit, buildDate); 
 		version = this.repository.save(version);
 		return version;
 	}

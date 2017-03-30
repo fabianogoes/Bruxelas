@@ -61,8 +61,7 @@ public class DashRestController {
 		logger.info( "getActualVersion("+build+", "+commit+")..." );
 		ResponseEntity<String> responseEntity = null;
 		try {
-			Version version = new Version(null, build, commit);
-			version =  this.versionService.save(version);
+			Version version =  this.versionService.save(build, commit);
 			HttpHeaders responseHeaders = new HttpHeaders();
 			String usuariosJson = new ObjectMapper().writeValueAsString(version);
 			responseEntity = new ResponseEntity<String>(usuariosJson, responseHeaders, HttpStatus.OK);

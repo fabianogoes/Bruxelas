@@ -14,14 +14,17 @@ public class Version {
 	private String build;
 	private String message;
 
+	private String buildDate;
+
 	public Version() {
 	}
 
-	public Version(Long id, String build, String message) {
+	public Version(Long id, String build, String message, String buildDate) {
 		super();
 		this.id = id;
 		this.build = build;
 		this.message = message;
+		this.buildDate = buildDate;
 	}
 
 	public Long getId() {
@@ -46,6 +49,14 @@ public class Version {
 
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	public String getBuildDate() {
+		return buildDate;
+	}
+
+	public void setBuildDate(String buildDate) {
+		this.buildDate = buildDate;
 	}
 
 	@Override
@@ -75,7 +86,7 @@ public class Version {
 
 	@Override
 	public String toString() {
-		return "Version [id=" + id + ", build=" + build + ", message=" + message + "]";
+		return "Version [id=" + id + ", build=" + build + ", message=" + message + ", buildDate=" + buildDate + "]";
 	}
 
 }
