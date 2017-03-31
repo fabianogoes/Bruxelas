@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bruxelas.entities.Country;
 import com.bruxelas.entities.Talker;
 import com.bruxelas.repositories.TalkerRepository;
 
@@ -17,6 +18,9 @@ public class TalkerService {
 	
 	@Autowired
 	private TalkerRepository repository;
+	
+	@Autowired
+	private CountryService countryService; 
 	
 	public Talker save(Talker talker) {
 		logger.info("save("+talker+")");
@@ -37,6 +41,10 @@ public class TalkerService {
 	public void delete(long id) {
 		logger.info("delete("+id+")");
 		this.repository.delete(id);
+	}
+
+	public List<Country> findAllNationalities() {
+		return this.countryService.findAll();
 	}
 
 }

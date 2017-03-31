@@ -7,6 +7,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -18,33 +19,33 @@ public class Talker {
 	private Long id;
 	private String name;
 
-	@Enumerated(EnumType.STRING)
-	private NacionalityType nacionality;
-
-	@Enumerated(EnumType.STRING)
-	private NacionalityType livingIn;
-
 	@Temporal(TemporalType.DATE)
 	private Calendar birthDate;
 
 	@Enumerated(EnumType.STRING)
 	private GenderType gender;
 
-	@Enumerated(EnumType.STRING)
-	private NacionalityType languagesYouSpeak;
+	@ManyToOne
+	private Country nacionality;
+	
+	@ManyToOne
+	private Country livingIn;
+	
+	@ManyToOne
+	private Country languageYouSpeak;
 
 	public Talker() {
 	}
 
-	public Talker(Long id, String name, NacionalityType nacionality, NacionalityType livingIn, Calendar birthDate,
-			GenderType gender, NacionalityType languagesYouSpeak) {
+	public Talker(Long id, String name, Country nacionality, Country livingIn, Calendar birthDate,
+			GenderType gender, Country languageYouSpeak) {
 		this.id = id;
 		this.name = name;
 		this.nacionality = nacionality;
 		this.livingIn = livingIn;
 		this.birthDate = birthDate;
 		this.gender = gender;
-		this.languagesYouSpeak = languagesYouSpeak;
+		this.languageYouSpeak = languageYouSpeak;
 	}
 
 	public Long getId() {
@@ -63,19 +64,19 @@ public class Talker {
 		this.name = name;
 	}
 
-	public NacionalityType getNacionality() {
+	public Country getNacionality() {
 		return nacionality;
 	}
 
-	public void setNacionality(NacionalityType nacionality) {
+	public void setNacionality(Country nacionality) {
 		this.nacionality = nacionality;
 	}
 
-	public NacionalityType getLivingIn() {
+	public Country getLivingIn() {
 		return livingIn;
 	}
 
-	public void setLivingIn(NacionalityType livingIn) {
+	public void setLivingIn(Country livingIn) {
 		this.livingIn = livingIn;
 	}
 
@@ -107,7 +108,7 @@ public class Talker {
 	@Override
 	public String toString() {
 		return "Talker [id=" + id + ", name=" + name + ", nacionality=" + nacionality + ", livingIn=" + livingIn
-				+ ", birthDate=" + birthDate + ", gender=" + gender + ", languagesYouSpeak=" + languagesYouSpeak + "]";
+				+ ", birthDate=" + birthDate + ", gender=" + gender + ", languagesYouSpeak=" + languageYouSpeak + "]";
 	}
 
 }

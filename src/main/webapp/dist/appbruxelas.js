@@ -37,12 +37,26 @@ appbruxelas.factory('SessionService', ['$http', function($http) {
     }
 
 }]);
-appbruxelas.controller('HomeController', ['ConnectionService', function(ConnectionService) {
+appbruxelas.factory('VersionService', ['$http', function($http) {
+
+    var _findActualVersion = function(userId) {
+        return $http.get('/api/version');
+    }
+
+    return {
+
+    	findActualVersion : _findActualVersion 
+
+    }
+
+}]);
+appbruxelas.controller('HomeController', ['ConnectionService', 'VersionService', function(ConnectionService, VersionService) {
 
     var self = this;
 
     self.init = function() {
-        self.findConnectionsByUser(1);
+        self.findConnectionsByUser(1);        
+        self.findActualVersion();
     }
 
     self.findConnectionsByUser = function(userId) {
@@ -51,6 +65,15 @@ appbruxelas.controller('HomeController', ['ConnectionService', function(Connecti
         }, function(error) {
             console.log(error);
         });
+    }
+
+    self.findActualVersion = function() {
+    	VersionService.findActualVersion().then(function(resp) {
+    		self.version = resp.data;
+    		console.log(self.version);
+    	}, function(error) {
+    		console.log(error);
+    	});
     }
 
     self.init();

@@ -22,9 +22,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.bruxelas.BruxelasApplication;
+import com.bruxelas.api.builders.CountryBuilder;
 import com.bruxelas.api.builders.TalkerBuilder;
 import com.bruxelas.api.helpers.RandomValueGeneratorHelper;
-import com.bruxelas.entities.NacionalityType;
+import com.bruxelas.entities.Country;
 import com.bruxelas.entities.Talker;
 import com.bruxelas.repositories.TalkerRepository;
 
@@ -39,27 +40,41 @@ public class TalkerServiceTest {
 	
 	@Mock
 	private TalkerRepository talkerRepositoryMock;
-
+	
+	private Country countryAny;
+	
+	private Talker talkerAny;
+	
 	@Before
 	public void init(){
 		MockitoAnnotations.initMocks(this);
+		
+		this.countryAny = new CountryBuilder()
+				.withId(null)
+				.withName(RandomValueGeneratorHelper.anyString())
+				.withLivingIn(RandomValueGeneratorHelper.anyString(10))
+				.withNationality(RandomValueGeneratorHelper.anyString(10))
+				.withLivingIn(RandomValueGeneratorHelper.anyString(10))
+				.build();
+		
+		this.talkerAny = new TalkerBuilder()
+				.withId(null)
+				.withName(RandomValueGeneratorHelper.anyString())
+				.withNacionality(this.countryAny)
+				.withLivingIn(this.countryAny)
+				.withLanguageYouSpeak(this.countryAny)
+				.build();
 	}	
 	
 	@Test
 	public void testSave() throws Exception{
-		Talker talkerAny = new TalkerBuilder()
-				.withId(null)
-				.withName(RandomValueGeneratorHelper.anyString())
-				.withNacionality(NacionalityType.BRAZILIAN)
-				.build();
-
-		when(this.talkerRepositoryMock.save(talkerAny)).thenReturn(talkerAny);
+		when(this.talkerRepositoryMock.save(this.talkerAny)).thenReturn(this.talkerAny);
 		
-		Talker talkerResponse = this.talkerServiceMock.save(talkerAny);
+		Talker talkerResponse = this.talkerServiceMock.save(this.talkerAny);
 		assertNotNull("[talkerResponse] should not be null", talkerResponse);
-		assertEquals("[talkerResponse] should be equals to [talkerAny]", talkerAny, talkerResponse);
+		assertEquals("[talkerResponse] should be equals to [talkerAny]", this.talkerAny, talkerResponse);
 		
-		verify(this.talkerRepositoryMock, times(1)).save(talkerAny);
+		verify(this.talkerRepositoryMock, times(1)).save(this.talkerAny);
 	}
 	
 	@Test
