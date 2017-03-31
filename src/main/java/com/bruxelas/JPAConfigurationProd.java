@@ -15,6 +15,29 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @ComponentScan("com.bruxelas.entities")
 public class JPAConfigurationProd implements JPAConfiguration {
 
+	/***************************************************************************************************** 
+	 * Openshift - MySQL
+	 *****************************************************************************************************
+		MySQL 5.5 database added.  Please make note of these credentials:
+		
+		       Root User: adminCUBivEk
+		   Root Password: b4be_AuNYSPh
+		   Database Name: bruxelas
+		
+		Connection URL: mysql://$OPENSHIFT_MYSQL_DB_HOST:$OPENSHIFT_MYSQL_DB_PORT/
+		
+		You can manage your new MySQL database by also embedding phpmyadmin.
+		The phpmyadmin username and password will be the same as the MySQL credentials above.	
+	
+	 ***************************************************************************************************** 
+	 * Openshift - PhpMyAdmin
+	 *****************************************************************************************************
+		Please make note of these MySQL credentials again:
+		  Root User: adminCUBivEk
+		  Root Password: b4be_AuNYSPh
+		URL: https://bruxelas-fabianoggoes.rhcloud.com/phpmyadmin/
+	 *****************************************************************************************************/
+	
     @Bean(destroyMethod = "close")
     public DataSource dataSource() {
     	System.out.println( "<<< Profile = prod >>>" );
