@@ -101,24 +101,24 @@
 		</plugins>
 	</build>
 
-<!-- 	<profiles> -->
-<!-- 		<profile> -->
-<!-- 			<id>openshift</id> -->
-<!-- 			<build> -->
-<!-- 				<finalName>bruxelas</finalName> -->
-<!-- 				<plugins> -->
-<!-- 					<plugin> -->
-<!-- 						<artifactId>maven-war-plugin</artifactId> -->
-<!-- 						<version>2.1.1</version> -->
-<!-- 						<configuration> -->
-<!-- 							<outputDirectory>deployments</outputDirectory> -->
-<!-- 							<warName>ROOT</warName> -->
-<!-- 						</configuration> -->
-<!-- 					</plugin> -->
-<!-- 				</plugins> -->
-<!-- 			</build> -->
-<!-- 		</profile> -->
-<!-- 	</profiles> -->
+	<profiles>
+		<profile>
+			<id>openshift</id>
+			<build>
+				<finalName>bruxelas</finalName>
+				<plugins>
+					<plugin>
+						<artifactId>maven-war-plugin</artifactId>
+						<version>2.1.1</version>
+						<configuration>
+							<outputDirectory>deployments</outputDirectory>
+							<warName>ROOT</warName>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 
 
 </project>
