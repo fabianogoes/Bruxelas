@@ -17,7 +17,7 @@ jdk: oraclejdk8
 
 after_success:
   - echo '>>> after_success <<<'
-#  - wget http://bruxelas-fabianoggoes.rhcloud.com/api/version/$TRAVIS_BUILD_NUMBER/$TRAVIS_COMMIT_MESSAGE
+  - wget http://bruxelas-fabianoggoes.rhcloud.com/api/version/$TRAVIS_BUILD_NUMBER/$TRAVIS_COMMIT_MESSAGE
 #  - rm -rf .git/
 #  - git init
 #  - git config --global push.default simple
