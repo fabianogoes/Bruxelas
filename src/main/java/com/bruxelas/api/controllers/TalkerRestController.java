@@ -1,6 +1,5 @@
 package com.bruxelas.api.controllers;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -10,6 +9,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +22,7 @@ import com.bruxelas.entities.Talker;
 import com.bruxelas.services.TalkerService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+@Controller
 @RestController
 @RequestMapping("/api/talker")
 public class TalkerRestController {
@@ -105,10 +106,7 @@ public class TalkerRestController {
 		logger.info( "getCountries()..." );
 		ResponseEntity<String> responseEntity = null;
 		try {
-			List<Country> countries = Arrays.asList(
-					new Country(1L, "Brazil", new Language(1L, "Portuguese", "Português")),
-					new Country(1L, "USA", new Language(2L, "English", "English"))
-			);
+			List<Country> countries = this.talkerService.findAllCountries();
 			
 			HttpHeaders responseHeaders = new HttpHeaders();
 			String usuariosJson = new ObjectMapper().writeValueAsString(countries);
@@ -125,10 +123,7 @@ public class TalkerRestController {
 		logger.info( "getLanguages()..." );
 		ResponseEntity<String> responseEntity = null;
 		try {
-			List<Language> languages = Arrays.asList(
-					new Language(1L, "Portuguese", "Português"),
-					new Language(2L, "English", "English")
-			);
+			List<Language> languages = this.talkerService.findAllLanguages();			
 			
 			HttpHeaders responseHeaders = new HttpHeaders();
 			String usuariosJson = new ObjectMapper().writeValueAsString(languages);

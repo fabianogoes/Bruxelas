@@ -8,6 +8,6 @@ appbruxelas.config(['$routeProvider', '$httpProvider', function($routeProvider, 
 
 			$routeProvider
 				.when('/', { templateUrl:'home.html'})             
-				.when('/profile', { templateUrl:'form-talker.html'});             
+				.when('/profile', { templateUrl:'talker/form-talker.html'});              
  
 }]);  	

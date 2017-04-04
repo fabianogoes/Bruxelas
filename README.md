@@ -23,6 +23,17 @@ CREATE USER 'bruxelas'@'localhost' IDENTIFIED BY 'bruxelas';
 GRANT ALL PRIVILEGES ON * . * TO 'bruxelas'@'localhost';
 ```   
 
+**Inserts**   
+
+```
+insert into language(name, native_name) values('Portuguese', 'Português');
+insert into language(name, native_name) values('English', 'English');
+
+insert into country(name, language_id) values('Brazil', 1);
+insert into country(name, language_id) values('USA', 2);
+```   
+
+
 > set Profile = prod   
 
 ``` 

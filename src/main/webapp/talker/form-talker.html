@@ -15,11 +15,11 @@
 							<div class="row">
 								<div class="col-md-10">
 									<label>Name: </label>
-									<input class="form-control input-sm" placeholder="Fulano de Tal"/>
+									<input ng-model="tcc.talker.name" class="form-control input-sm" placeholder="Fulano de Tal"/>
 								</div>
 								<div class="col-md-2">
 									<label>Birth Date: </label>
-									<input class="form-control input-sm" placeholder="17/02/1995"/>
+									<input ng-model="tcc.talker.birthDate" class="form-control input-sm" placeholder="17/02/1995"/>
 								</div>
 							</div>
 							
@@ -27,22 +27,31 @@
 							
 							<div class="row">
 								<div class="col-md-4">
-									<label>Nationality: </label>
-									<select class="form-control input-sm">
-										<option>Brasileiro</option>
+									<label>Born in: </label> 
+									<select class="form-control input-sm" data-ng-model="tcc.talker.bornIn.id">
+										<option value=""></option> 
+										<option data-ng-repeat="c in tcc.countriesBorn" value="{{c.id}}">{{ c.name }}</option>
 									</select>
-								</div>
-								<div class="col-md-4">
+								</div>  
+								<div class="col-md-4"> 
 									<label>Living in: </label>
-									<select class="form-control input-sm">
-										<option>Brasil</option>
+									<select class="form-control input-sm" data-ng-model="tcc.talker.livingIn.id">
+										<option value=""></option>
+										<option data-ng-repeat="c in tcc.countriesLiving" value="{{c.id}}">{{ c.name }}</option>
 									</select>
 								</div>
 								<div class="col-md-4">
 									<label>Native language: </label>
-									<select class="form-control input-sm">
-										<option>Portugu&ecircs</option>
+									<select class="form-control input-sm" data-ng-model="tcc.talker.nativeLanguage.id">
+										<option value=""></option>
+										<option data-ng-repeat="l in tcc.languages" value="{{l.id}}">{{ l.name }}</option>
 									</select>
+								</div>
+							</div>
+							<div class="row">
+								<br/>
+								<div class="col-md-12 text-right">
+									<button class="btn btn-success" ng-click="tcc.save(tcc.talker)">Save</button>
 								</div>
 							</div>
 	

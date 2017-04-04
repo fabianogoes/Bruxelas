@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bruxelas.entities.Country;
+import com.bruxelas.entities.Language;
 import com.bruxelas.entities.Talker;
 import com.bruxelas.repositories.TalkerRepository;
 
@@ -21,6 +22,9 @@ public class TalkerService {
 	
 	@Autowired
 	private CountryService countryService; 
+	
+	@Autowired
+	private LanguageService languageService;
 	
 	public Talker save(Talker talker) {
 		logger.info("save("+talker+")");
@@ -43,8 +47,12 @@ public class TalkerService {
 		this.repository.delete(id);
 	}
 
-	public List<Country> findAllNationalities() {
+	public List<Country> findAllCountries() {
 		return this.countryService.findAll();
+	}
+
+	public List<Language> findAllLanguages() {
+		return this.languageService.findAll();
 	}
 
 }

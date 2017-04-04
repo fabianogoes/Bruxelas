@@ -11,6 +11,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.bruxelas.api.helpers.CalendarToStringSerializerHelpser;
+import com.bruxelas.api.helpers.StringToCalendarDeserializerHelper;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 @Entity
 public class Talker {
 
@@ -19,6 +24,8 @@ public class Talker {
 	private Long id;
 	private String name;
 
+	@JsonSerialize(using = CalendarToStringSerializerHelpser.class)
+	@JsonDeserialize(using = StringToCalendarDeserializerHelper.class)
 	@Temporal(TemporalType.DATE)
 	private Calendar birthDate;
 
