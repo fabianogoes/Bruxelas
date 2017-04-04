@@ -90,7 +90,7 @@ public class TalkerRestControllerTest {
 				.withName(RandomValueGeneratorHelper.anyString())
 				.withBornIn(this.countryAny)
 				.withLivingIn(this.countryAny)
-				.withLanguageYouSpeak(this.languageAny)
+				.withNativeLanguage(this.languageAny)
 				.build();
 		
 		this.talkersAny = Arrays.asList(this.talkerAny);

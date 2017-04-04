@@ -70,7 +70,7 @@ public class TalkerServiceTest {
 				.withName(RandomValueGeneratorHelper.anyString())
 				.withBornIn(this.countryAny)
 				.withLivingIn(this.countryAny)
-				.withLanguageYouSpeak(this.languageAny)
+				.withNativeLanguage(this.languageAny)
 				.build();
 	}	
 	

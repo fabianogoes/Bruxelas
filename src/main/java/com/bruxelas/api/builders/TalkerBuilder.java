@@ -32,8 +32,8 @@ public class TalkerBuilder {
 		return this;
 	}
 	
-	public TalkerBuilder withLanguageYouSpeak(Language languageYouSpeak){
-		this.talker.setLanguageYouSpeak(languageYouSpeak);
+	public TalkerBuilder withNativeLanguage(Language nativeLanguage){
+		this.talker.setNativeLanguage(nativeLanguage);
 		return this;
 	}
 	
