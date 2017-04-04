@@ -22,8 +22,8 @@ public class TalkerBuilder {
 		return this;
 	}
 	
-	public TalkerBuilder withNacionality(Country nacionality){
-		this.talker.setNacionality(nacionality);
+	public TalkerBuilder withBornIn(Country bornIn){
+		this.talker.setBornIn(bornIn);
 		return this;
 	}
 	

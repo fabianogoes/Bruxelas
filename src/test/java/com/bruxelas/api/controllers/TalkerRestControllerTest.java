@@ -68,8 +68,6 @@ public class TalkerRestControllerTest {
 	
 	private List<Talker> talkersAny;
 	
-	private List<Country> countriesAny;
-	
 	@Before
     public void setup() throws Exception {
 		MockitoAnnotations.initMocks(this);
@@ -90,13 +88,12 @@ public class TalkerRestControllerTest {
 		this.talkerAny = new TalkerBuilder()
 				.withId(null)
 				.withName(RandomValueGeneratorHelper.anyString())
-				.withNacionality(this.countryAny)
+				.withBornIn(this.countryAny)
 				.withLivingIn(this.countryAny)
 				.withLanguageYouSpeak(this.languageAny)
 				.build();
 		
 		this.talkersAny = Arrays.asList(this.talkerAny);
-		this.countriesAny = Arrays.asList(this.countryAny);
     }   
     
 	@Test
@@ -164,5 +161,7 @@ public class TalkerRestControllerTest {
 		
 		verify(this.talkerServiceMock, times(1)).delete(anyLong());
 	}
+	
+	// TODO: Test mappings: getLanguages, getCountries
 	
 }

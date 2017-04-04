@@ -68,7 +68,7 @@ public class TalkerServiceTest {
 		this.talkerAny = new TalkerBuilder()
 				.withId(null)
 				.withName(RandomValueGeneratorHelper.anyString())
-				.withNacionality(this.countryAny)
+				.withBornIn(this.countryAny)
 				.withLivingIn(this.countryAny)
 				.withLanguageYouSpeak(this.languageAny)
 				.build();

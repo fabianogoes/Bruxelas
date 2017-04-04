@@ -26,7 +26,7 @@ public class Talker {
 	private GenderType gender;
 
 	@ManyToOne
-	private Country nacionality;
+	private Country bornIn;
 
 	@ManyToOne
 	private Country livingIn;
@@ -37,14 +37,14 @@ public class Talker {
 	public Talker() {
 	}
 
-	public Talker(Long id, String name, Calendar birthDate, GenderType gender, Country nacionality, Country livingIn,
+	public Talker(Long id, String name, Calendar birthDate, GenderType gender, Country bornIn, Country livingIn,
 			Language languageYouSpeak) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.birthDate = birthDate;
 		this.gender = gender;
-		this.nacionality = nacionality;
+		this.bornIn = bornIn;
 		this.livingIn = livingIn;
 		this.languageYouSpeak = languageYouSpeak;
 	}
@@ -81,12 +81,12 @@ public class Talker {
 		this.gender = gender;
 	}
 
-	public Country getNacionality() {
-		return nacionality;
+	public Country getBornIn() {
+		return bornIn;
 	}
 
-	public void setNacionality(Country nacionality) {
-		this.nacionality = nacionality;
+	public void setBornIn(Country bornIn) {
+		this.bornIn = bornIn;
 	}
 
 	public Country getLivingIn() {
@@ -132,8 +132,8 @@ public class Talker {
 
 	@Override
 	public String toString() {
-		return "Talker [id=" + id + ", name=" + name + ", nacionality=" + nacionality + ", livingIn=" + livingIn
-				+ ", birthDate=" + birthDate + ", gender=" + gender + ", languagesYouSpeak=" + languageYouSpeak + "]";
+		return "Talker [id=" + id + ", name=" + name + ", birthDate=" + birthDate + ", gender=" + gender + ", bornIn="
+				+ bornIn + ", livingIn=" + livingIn + ", languageYouSpeak=" + languageYouSpeak + "]";
 	}
 
 }
