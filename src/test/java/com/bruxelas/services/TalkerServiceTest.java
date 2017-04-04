@@ -23,9 +23,11 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.bruxelas.BruxelasApplication;
 import com.bruxelas.api.builders.CountryBuilder;
+import com.bruxelas.api.builders.LanguageBuilder;
 import com.bruxelas.api.builders.TalkerBuilder;
 import com.bruxelas.api.helpers.RandomValueGeneratorHelper;
 import com.bruxelas.entities.Country;
+import com.bruxelas.entities.Language;
 import com.bruxelas.entities.Talker;
 import com.bruxelas.repositories.TalkerRepository;
 
@@ -41,6 +43,8 @@ public class TalkerServiceTest {
 	@Mock
 	private TalkerRepository talkerRepositoryMock;
 	
+	private Language languageAny;
+	
 	private Country countryAny;
 	
 	private Talker talkerAny;
@@ -49,12 +53,16 @@ public class TalkerServiceTest {
 	public void init(){
 		MockitoAnnotations.initMocks(this);
 		
+		this.languageAny = new LanguageBuilder()
+				.withId(null)
+				.withName(RandomValueGeneratorHelper.anyString(10))
+				.withNativeName(RandomValueGeneratorHelper.anyString(10))
+				.build();
+		
 		this.countryAny = new CountryBuilder()
 				.withId(null)
 				.withName(RandomValueGeneratorHelper.anyString())
-				.withLivingIn(RandomValueGeneratorHelper.anyString(10))
-				.withNationality(RandomValueGeneratorHelper.anyString(10))
-				.withLivingIn(RandomValueGeneratorHelper.anyString(10))
+				.withLanguage(this.languageAny)
 				.build();
 		
 		this.talkerAny = new TalkerBuilder()
@@ -62,7 +70,7 @@ public class TalkerServiceTest {
 				.withName(RandomValueGeneratorHelper.anyString())
 				.withNacionality(this.countryAny)
 				.withLivingIn(this.countryAny)
-				.withLanguageYouSpeak(this.countryAny)
+				.withLanguageYouSpeak(this.languageAny)
 				.build();
 	}	
 	

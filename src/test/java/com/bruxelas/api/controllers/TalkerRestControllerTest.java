@@ -34,9 +34,11 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.bruxelas.BruxelasApplication;
 import com.bruxelas.api.builders.CountryBuilder;
+import com.bruxelas.api.builders.LanguageBuilder;
 import com.bruxelas.api.builders.TalkerBuilder;
 import com.bruxelas.api.helpers.RandomValueGeneratorHelper;
 import com.bruxelas.entities.Country;
+import com.bruxelas.entities.Language;
 import com.bruxelas.entities.Talker;
 import com.bruxelas.services.TalkerService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -58,6 +60,8 @@ public class TalkerRestControllerTest {
 	@Autowired 
 	private ObjectMapper mapper;
 	
+	private Language languageAny;
+	
 	private Country countryAny;
 	
 	private Talker talkerAny;
@@ -71,12 +75,16 @@ public class TalkerRestControllerTest {
 		MockitoAnnotations.initMocks(this);
 		this.mockMvc = MockMvcBuilders.standaloneSetup(talkerRestControllerMock).build();
 		
+		this.languageAny = new LanguageBuilder()
+				.withId(null)
+				.withName(RandomValueGeneratorHelper.anyString(10))
+				.withNativeName(RandomValueGeneratorHelper.anyString(10))
+				.build();
+		
 		this.countryAny = new CountryBuilder()
 				.withId(null)
 				.withName(RandomValueGeneratorHelper.anyString())
-				.withLivingIn(RandomValueGeneratorHelper.anyString(10))
-				.withNationality(RandomValueGeneratorHelper.anyString(10))
-				.withLivingIn(RandomValueGeneratorHelper.anyString(10))
+				.withLanguage(this.languageAny)
 				.build();
 		
 		this.talkerAny = new TalkerBuilder()
@@ -84,7 +92,7 @@ public class TalkerRestControllerTest {
 				.withName(RandomValueGeneratorHelper.anyString())
 				.withNacionality(this.countryAny)
 				.withLivingIn(this.countryAny)
-				.withLanguageYouSpeak(this.countryAny)
+				.withLanguageYouSpeak(this.languageAny)
 				.build();
 		
 		this.talkersAny = Arrays.asList(this.talkerAny);
@@ -128,22 +136,6 @@ public class TalkerRestControllerTest {
 		assertEquals("[talkersMock] should be equals to [talkersResponse]", this.talkersAny, talkersResponse);
 		
 		verify(this.talkerServiceMock, times(1)).findAll();
-	}
-	
-	@Test
-	public void testFindAllNationalities() throws Exception{
-		when(this.talkerServiceMock.findAllNationalities()).thenReturn(this.countriesAny);
-		
-		ResultActions resultActions = mockMvc.perform(get("/api/talker/countries"))
-				.andExpect(status().isOk())
-				.andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE));
-		
-		MockHttpServletResponse response = resultActions.andReturn().getResponse();
-		List<Country> countryResponse = Arrays.asList(new ObjectMapper().readValue(response.getContentAsString(), Country[].class));
-		assertNotNull("[countryResponse] should not be null", countryResponse);
-		assertEquals("[countryMock] should be equals to [countryResponse]", this.countriesAny, countryResponse);
-		
-		verify(this.talkerServiceMock, times(1)).findAllNationalities();
 	}
 	
 	@Test

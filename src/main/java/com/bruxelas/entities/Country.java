@@ -3,6 +3,7 @@ package com.bruxelas.entities;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Country {
@@ -11,11 +12,17 @@ public class Country {
 	@GeneratedValue
 	private Long id;
 	private String name;
-	private String nationality;
-	private String livingIn;
-	private String nativeLanguage;
+
+	@ManyToOne
+	private Language language;
 
 	public Country() {
+	}
+
+	public Country(Long id, String name, Language language) {
+		this.id = id;
+		this.name = name;
+		this.language = language;
 	}
 
 	public Long getId() {
@@ -34,28 +41,12 @@ public class Country {
 		this.name = name;
 	}
 
-	public String getNationality() {
-		return nationality;
+	public Language getLanguage() {
+		return language;
 	}
 
-	public void setNationality(String nationality) {
-		this.nationality = nationality;
-	}
-
-	public String getLivingIn() {
-		return livingIn;
-	}
-
-	public void setLivingIn(String livingIn) {
-		this.livingIn = livingIn;
-	}
-
-	public String getNativeLanguage() {
-		return nativeLanguage;
-	}
-
-	public void setNativeLanguage(String nativeLanguage) {
-		this.nativeLanguage = nativeLanguage;
+	public void setLanguage(Language language) {
+		this.language = language;
 	}
 
 	@Override
@@ -85,8 +76,7 @@ public class Country {
 
 	@Override
 	public String toString() {
-		return "Country [id=" + id + ", name=" + name + ", nationality=" + nationality + ", livingIn=" + livingIn
-				+ ", nativeLanguage=" + nativeLanguage + "]";
+		return "Country [id=" + id + ", name=" + name + ", nativeLanguage=" + language + "]";
 	}
 
 }

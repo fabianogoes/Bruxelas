@@ -1,6 +1,7 @@
 package com.bruxelas.api.builders;
 
 import com.bruxelas.entities.Country;
+import com.bruxelas.entities.Language;
 import com.bruxelas.entities.Talker;
 
 public class TalkerBuilder {
@@ -31,8 +32,8 @@ public class TalkerBuilder {
 		return this;
 	}
 	
-	public TalkerBuilder withLanguageYouSpeak(Country languageYouSpeak){
-		this.talker.setLivingIn(languageYouSpeak);
+	public TalkerBuilder withLanguageYouSpeak(Language languageYouSpeak){
+		this.talker.setLanguageYouSpeak(languageYouSpeak);
 		return this;
 	}
 	
