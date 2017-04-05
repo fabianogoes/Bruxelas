@@ -4,20 +4,20 @@ appbruxelas.controller('TalkerCRUDController', ['$http', function($http) {
 
     self.init = function() {
     	// Born
-    	$http.get('/bruxelas/api/talker/countries').then(function(resp) {
+    	$http.get('/api/talker/countries').then(function(resp) {
     		self.countriesBorn = resp.data;
     		console.log(self.countriesBorn);
     	}, function(error) {
     		console.log(error);  
     	});
     	// Live in
-    	$http.get('/bruxelas/api/talker/countries').then(function(resp) {
+    	$http.get('/api/talker/countries').then(function(resp) {
     		self.countriesLiving = resp.data;
     	}, function(error) {
     		console.log(error);  
     	});    	
     	// Languages
-    	$http.get('/bruxelas/api/talker/languages').then(function(resp) {
+    	$http.get('/api/talker/languages').then(function(resp) {
     		self.languages = resp.data;
     	}, function(error) {
     		console.log(error);  
