@@ -1,30 +1,42 @@
-appbruxelas.controller('TalkerCRUDController', ['$http', function($http) {
+appbruxelas.controller('TalkerCRUDController', ['TalkerService', function(TalkerService) {
 
     var self = this;
 
     self.init = function() {
     	// Born
-    	$http.get('/bruxelas/api/talker/countries').then(function(resp) {
+		self.findCountiresBorn();
+    	// Live in
+		self.findCountriesLiving();
+    	// Languages
+    	self.findLanguages();
+
+    }
+    
+	self.findCountiresBorn = function() {
+    	TalkerService.findCountries().then(function(resp) {
     		self.countriesBorn = resp.data;
     		console.log(self.countriesBorn);
     	}, function(error) {
     		console.log(error);  
     	});
-    	// Live in
-    	$http.get('/bruxelas/api/talker/countries').then(function(resp) {
+	}
+
+	self.findCountriesLiving = function() {
+    	TalkerService.findCountries().then(function(resp) {
     		self.countriesLiving = resp.data;
     	}, function(error) {
     		console.log(error);  
     	});    	
-    	// Languages
-    	$http.get('/bruxelas/api/talker/languages').then(function(resp) {
+	}
+
+	self.findLanguages = function() {
+		TalkerService.findLanguages().then(function(resp) {
     		self.languages = resp.data;
     	}, function(error) {
     		console.log(error);  
     	});    	
+	}
 
-    }
-    
 //    self.languages = [{}];
 //    
 //    self.addLanguage = function(){ 
