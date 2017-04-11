@@ -1,6 +1,7 @@
 language: java
 
-script: mvn clean package -Popenshift
+#script: mvn clean package -Popenshift
+script: mvn test
 
 jdk: oraclejdk8
 
@@ -28,16 +29,16 @@ after_success:
 #  - git commit -am "Travis change"
 #  - git push --set-upstream ssh://58d73dad89f5cf4b72000179@bruxelas-fabianoggoes.rhcloud.com/~/git/bruxelas.git/ master
 
-deploy:
-  provider: openshift
-  skip_cleanup: true
-  user: fabianogoes@gmail.com
-  password:
-    secure: l+ptyyjFXP1l2BVdhlkq1qoF6gTkkuhXrOsAWYhZO76kO+sygxBf1LW753FEfW73be52rII78rWBZuA0UTX9Llzpb/x2Hw0nJUAqRaj6mW08ZuNT2TItQKMkP2//eGZ1Rhxt/QD6hN7heoM16AxsDcQl1FUgvb0NopWH/cLsmZWdArdkm6JB9swYoXqVZXzyQGxo4SgQzf1XavazQjy0YTeenh96NpCGX0b6btlQdgN6LB9Kzk6Vemlqia2ntyKKV1R0gU8uiFmrh8Kva5tV5GdN49gJt+vRbSF6toq0a0Tl5sL69lOd3J8WZkGWhyhaC8O3Q0N5Ekw459QUU9YhtvktYBAeAFhkqOxs9/TQAvQifnI2dBiV72DZoM8bSl1XJaxmiqubuq0Es4NLaY76l4gdOrYhyj5v/eXXx8cpV6me41n/ebPrX6KKlsr8FKacIVFiT3GSXHRY+a410VAX9GU2K0ouToSIFNCTJYgah3JgoQVyEzGFgGrfimhm0b2NHeeA+PbF3P5QFJDmdgc0i7Fk1C+Ex+Q5ZJDWDFziBuf3xzOJcWzok+yX0MwxgW9mbIX1V9TMSJMl9pGHltg01vp7W2li6SaRTkxoG88LmNiMCQl/O8IQ/qsD2LdCYNUvjZogW8D6Oe/aXntgRN4zCDR4vwpsIDKATgjIlPA6iYc=
-  app: bruxelas
-  domain: fabianoggoes
-  on:
-    repo: fabianogoes/bruxelas
+#deploy:
+#  provider: openshift
+#  skip_cleanup: true
+#  user: fabianogoes@gmail.com
+#  password:
+#    secure: l+ptyyjFXP1l2BVdhlkq1qoF6gTkkuhXrOsAWYhZO76kO+sygxBf1LW753FEfW73be52rII78rWBZuA0UTX9Llzpb/x2Hw0nJUAqRaj6mW08ZuNT2TItQKMkP2//eGZ1Rhxt/QD6hN7heoM16AxsDcQl1FUgvb0NopWH/cLsmZWdArdkm6JB9swYoXqVZXzyQGxo4SgQzf1XavazQjy0YTeenh96NpCGX0b6btlQdgN6LB9Kzk6Vemlqia2ntyKKV1R0gU8uiFmrh8Kva5tV5GdN49gJt+vRbSF6toq0a0Tl5sL69lOd3J8WZkGWhyhaC8O3Q0N5Ekw459QUU9YhtvktYBAeAFhkqOxs9/TQAvQifnI2dBiV72DZoM8bSl1XJaxmiqubuq0Es4NLaY76l4gdOrYhyj5v/eXXx8cpV6me41n/ebPrX6KKlsr8FKacIVFiT3GSXHRY+a410VAX9GU2K0ouToSIFNCTJYgah3JgoQVyEzGFgGrfimhm0b2NHeeA+PbF3P5QFJDmdgc0i7Fk1C+Ex+Q5ZJDWDFziBuf3xzOJcWzok+yX0MwxgW9mbIX1V9TMSJMl9pGHltg01vp7W2li6SaRTkxoG88LmNiMCQl/O8IQ/qsD2LdCYNUvjZogW8D6Oe/aXntgRN4zCDR4vwpsIDKATgjIlPA6iYc=
+#  app: bruxelas
+#  domain: fabianoggoes
+#  on:
+#    repo: fabianogoes/bruxelas
 
 branches:
   only:
