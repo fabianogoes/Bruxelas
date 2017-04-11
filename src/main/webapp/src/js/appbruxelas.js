@@ -2,7 +2,7 @@
  * App Bruxelas 
  * v0.0.1
  */
-var appbruxelas = angular.module('appbruxelas', ['ngRoute']); 
+var appbruxelas = angular.module('appbruxelas', ['ngRoute','ui.bootstrap']); 
   
 appbruxelas.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider) {
 

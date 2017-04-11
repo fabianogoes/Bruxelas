@@ -19,7 +19,16 @@
 								</div>
 								<div class="col-md-2">
 									<label>Birth Date: </label>
-									<input ng-model="tcc.talker.birthDate" class="form-control input-sm" placeholder="17/02/1995"/>
+<!-- 									<span class="input-group"> -->
+<!-- 										<input data-ng-model="tcc.talker.birthDate" maxlength="10" size="10" class="form-control input-sm" -->
+<!-- 											   data-uib-datepicker-popup="dd/MM/yyyy" data-datepicker-options="tcc.dateOptions"  -->
+<!-- 									 		   data-close-text="Close" class="form-control input-xs-tdv text-center datepicker" data-is-open="tcc.openedBirthDate" readonly="readonly"/> -->
+<!-- 									</span> -->
+<!-- 								 	<span class="input-group-btn">	 -->
+<!-- 		            					<button type="button" class="btn btn-success btn-xs"  data-ng-click="tcc.open()"> -->
+<!-- 		            						<i class="glyphicon glyphicon-calendar"></i> -->
+<!-- 		            					</button> -->
+<!-- 	          				    	</span>	 -->
 								</div>
 							</div>
 							
@@ -51,7 +60,7 @@
 							<div class="row">
 								<br/>
 								<div class="col-md-12 text-right">
-									<button class="btn btn-success" ng-click="tcc.save(tcc.talker)">Save</button>
+									<button class="btn btn-success bg-dark-green-template" ng-click="tcc.save(tcc.talker)">Save</button>
 								</div>
 							</div>
 	
@@ -61,32 +70,32 @@
 				
 			</div><!-- <div class="row"> -->
 
-			<div class="row">
+			<div class="row" data-ng-show="tcc.talker.id">
 				<div class="col-md-12">
 					<div class="panel panel-warning">
 						<div class="panel-body">
 							<label class="control-label col-md-3 text-center center-object padding-left-right-5">Languages you speak or learn: </label>
 
 							<div class="col-md-8">
-								<div data-ng-repeat="l in tcc.languages" class="col-md-12 center-object padding-left-right-5">
+								<div data-ng-repeat="l in tcc.languagesSpeak" class="col-md-12 center-object padding-left-right-5">
 									<label class="col-md-2 padding-left-right-5">Languange: </label>
 									<div class="col-md-3 padding-left-right-5">
-										<select class="form-control input-xs" data-ng-model="l.description">
-											<option>Portugu&ecircs</option>
+										<select class="form-control input-xs" data-ng-model="tcc.languageSpeak.language" 
+												data-ng-options="l.name for l in tcc.languages">
 										</select>
 									</div>
 									<label class="col-md-1 padding-left-right-5" 
-											data-ng-show="l.isLearning == true" >Level: </label>
+											data-ng-show="tcc.languageSpeak.learning == true" >Level: </label>
 									<div class="col-md-3 padding-left-right-5" data-ng-model="l.level" 
-										 data-ng-show="l.isLearning == true" >
+										 data-ng-show="tcc.languageSpeak.learning == true" >
 										<select class="form-control input-xs">
 											<option>Beginner</option>
 										</select>
 									</div>
-									<div data-ng-show="l.isLearning == false || l.isLearning == undefined" 
+									<div data-ng-show="tcc.languageSpeak.learning == false || tcc.languageSpeak.learning == undefined" 
 										 class="col-md-4 padding-left-right-5"></div>
 									<label class="col-md-2 padding-left-right-5"> 
-										<input type="checkbox" data-ng-model="l.isLearning"/> Learning 
+										<input type="checkbox" data-ng-model="tcc.languageSpeak.learning"/> Learning 
 									</label>
 									<div class="col-md-1">
 										<button data-ng-disabled="$index == 0" data-ng-click="tcc.popLanguages($index)" 
@@ -100,9 +109,9 @@
 							</div>
 
 							<div class="col-md-1 padding-left-right-5">
-								<button class="btn btn-success bg-dark-green-template" data-ng-click="tcc.addLanguage()"
-										data-ng-disabled="tcc.languages.length >= 7">
-									<i class="fa fa-plus"></i>
+								<button class="btn btn-success bg-dark-green-template" data-ng-click="tcc.addLanguage(tcc.languageSpeak)"
+										data-ng-disabled="tcc.languagesSpeak.length >= 7">
+									<i class="fa fa-save"></i>
 								</button>
 							</div>
 						</div>
