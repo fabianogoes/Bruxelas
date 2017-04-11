@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.bruxelas.entities.Country;
 import com.bruxelas.entities.Language;
+import com.bruxelas.entities.LanguagesYouSpeak;
 import com.bruxelas.entities.Talker;
 import com.bruxelas.repositories.TalkerRepository;
 
@@ -25,6 +26,9 @@ public class TalkerService {
 	
 	@Autowired
 	private LanguageService languageService;
+	
+	@Autowired
+	private LanguagesYouSpeakService LanguagesYouSpeakService;
 	
 	public Talker save(Talker talker) {
 		logger.info("save("+talker+")");
@@ -53,6 +57,10 @@ public class TalkerService {
 
 	public List<Language> findAllLanguages() {
 		return this.languageService.findAll();
+	}
+
+	public LanguagesYouSpeak addLanguageLearn(LanguagesYouSpeak languagesYouSpeak) {
+		return this.LanguagesYouSpeakService.save(languagesYouSpeak);
 	}
 
 }
