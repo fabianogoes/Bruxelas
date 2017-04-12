@@ -27,11 +27,11 @@ body{
   vertical-align: baseline;
   /*background-color: #777;*/
   border-radius: 4px;
-	background-color: #5C953D;
-	position: absolute;
-	top: 7px;
-	font-weight: bold;
-	left: 22px;
+  background-color: #5C953D;
+  position: absolute;
+  top: 7px;
+  font-weight: bold;
+  left: 22px;
 }
 .badge-notifications:empty {
   display: none;

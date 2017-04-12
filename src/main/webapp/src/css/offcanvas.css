@@ -33,7 +33,7 @@ body {
   }
 
   .row-offcanvas-left
-  .sidebar-offcanvas {
+  .sidebar-offcanvas {	
     left: -50%; /* 6 columns */
   }
 
