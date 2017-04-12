@@ -1,7 +1,7 @@
 <div class="container padding-top-dif-menu-5" data-ng-controller="TalkerCRUDController as tcc">
 	<div class="panel panel-warning">
 		<div class="panel-body">
-			
+				
 			<div class="row center-object">
 			
 				<div class="col-md-2 text-center">
@@ -13,22 +13,23 @@
 						<div class="panel-body">
 	
 							<div class="row">
-								<div class="col-md-10">
+								<div class="col-md-9">
 									<label>Name: </label>
-									<input ng-model="tcc.talker.name" class="form-control input-sm" placeholder="Fulano de Tal"/>
+									<input data-ng-model="tcc.talker.name" class="form-control input-sm" placeholder="Fulano de Tal"/>
 								</div>
-								<div class="col-md-2">
+								<div class="col-md-3">
 									<label>Birth Date: </label>
-<!-- 									<span class="input-group"> -->
-<!-- 										<input data-ng-model="tcc.talker.birthDate" maxlength="10" size="10" class="form-control input-sm" -->
-<!-- 											   data-uib-datepicker-popup="dd/MM/yyyy" data-datepicker-options="tcc.dateOptions"  -->
-<!-- 									 		   data-close-text="Close" class="form-control input-xs-tdv text-center datepicker" data-is-open="tcc.openedBirthDate" readonly="readonly"/> -->
-<!-- 									</span> -->
-<!-- 								 	<span class="input-group-btn">	 -->
-<!-- 		            					<button type="button" class="btn btn-success btn-xs"  data-ng-click="tcc.open()"> -->
-<!-- 		            						<i class="glyphicon glyphicon-calendar"></i> -->
-<!-- 		            					</button> -->
-<!-- 	          				    	</span>	 -->
+									<span class="input-group">
+										<input data-ng-model="tcc.talker.birthDate"size="10" class="form-control input-sm"
+											   data-uib-datepicker-popup="dd/MM/yyyy" data-datepicker-options="tcc.dateOptions" 
+									 		   data-close-text="Close" class="form-control input-xs-tdv text-center datepicker" 
+									 		   data-is-open="tcc.openedBirthDate" readonly="readonly" maxlength="10" />
+									 	<span class="input-group-btn">	
+			            					<button type="button" class="btn btn-success btn-sm bg-dark-green-template"  data-ng-click="tcc.open()">
+			            						<i class="glyphicon glyphicon-calendar"></i>
+			            					</button>
+		          				    	</span>	
+									</span>
 								</div>
 							</div>
 							
@@ -60,15 +61,15 @@
 							<div class="row">
 								<br/>
 								<div class="col-md-12 text-right">
-									<button class="btn btn-success bg-dark-green-template" ng-click="tcc.save(tcc.talker)">Save</button>
+									<button class="btn btn-success bg-dark-green-template" data-ng-click="tcc.save(tcc.talker)">Save</button>
 								</div>
 							</div>
 	
-						</div><!-- <div class="panel-body"> -->
-					</div><!-- <div class="panel panel-warning"> -->
-				</div><!-- <div class="col-md-10"> -->
+						</div><!--  <div class="panel-body">-->
+					</div><!--  <div class="panel panel-warning">-->
+				</div><!-- <div class="col-md-10">  -->
 				
-			</div><!-- <div class="row"> -->
+			</div><!-- <div class="row">  -->
 
 			<div class="row" data-ng-show="tcc.talker.id">
 				<div class="col-md-12">

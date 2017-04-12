@@ -11,3 +11,7 @@ appbruxelas.config(['$routeProvider', '$httpProvider', function($routeProvider, 
 				.when('/profile', { templateUrl:'talker/form-talker.html'});              
  
 }]);  	
+
+appbruxelas.config(['$locationProvider', function($locationProvider) {
+	  $locationProvider.hashPrefix('');
+}]);
