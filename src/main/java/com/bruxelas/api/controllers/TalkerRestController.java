@@ -136,6 +136,23 @@ public class TalkerRestController {
 		return responseEntity;
 	}
 	
+	@RequestMapping(value="/languagesyouspeak/{talkerId}", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<String> getLanguagesYouSpeak(@PathVariable("talkerId") Long talkerId){
+		logger.info( "getLanguagesYouSpeak("+talkerId+")..." );
+		ResponseEntity<String> responseEntity = null;
+		try {
+			List<LanguagesYouSpeak> languagesYouSpeaks = this.talkerService.findLanguageLearnByTalker(talkerId);
+			
+			HttpHeaders responseHeaders = new HttpHeaders();
+			String usuariosJson = new ObjectMapper().writeValueAsString(languagesYouSpeaks);
+			responseEntity = new ResponseEntity<String>(usuariosJson, responseHeaders, HttpStatus.OK);
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+		}
+		return responseEntity;
+	}	
+	
 	@RequestMapping(value="/languagelearn", method=RequestMethod.POST, produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<String> getLanguagelearn(@RequestBody LanguagesYouSpeak languagesYouSpeak){
 		logger.info( "getLanguagelearn()..." );

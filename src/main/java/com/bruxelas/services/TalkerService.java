@@ -63,4 +63,7 @@ public class TalkerService {
 		return this.LanguagesYouSpeakService.save(languagesYouSpeak);
 	}
 
+	public List<LanguagesYouSpeak> findLanguageLearnByTalker(Long talkerId) {
+		return this.LanguagesYouSpeakService.findByTalkerId(talkerId);
+	}
 }

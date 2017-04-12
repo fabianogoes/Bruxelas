@@ -8,6 +8,10 @@ appbruxelas.factory('TalkerService', ['$http', function($http) {
         return $http.get('/bruxelas/api/talker/languages');
     }
 
+    var _findLanguagesYouSpeakByTalkerId = function(talkerId) {
+    	return $http.get('/bruxelas/api/talker/languagesyouspeak/'+talkerId);
+    }
+    
     var _addLanguageSpeak = function(languageSpeak) {
     	return $http.post('/bruxelas/api/talker/languagelearn', languageSpeak);
     }
@@ -21,6 +25,8 @@ appbruxelas.factory('TalkerService', ['$http', function($http) {
         findCountries : _findCountries,
 
         findLanguages : _findLanguages,
+        
+        findLanguagesYouSpeakByTalkerId : _findLanguagesYouSpeakByTalkerId,
         
         addLanguageSpeak : _addLanguageSpeak,
 

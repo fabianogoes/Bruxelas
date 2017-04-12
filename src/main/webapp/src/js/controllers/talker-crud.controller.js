@@ -23,6 +23,10 @@ appbruxelas.controller('TalkerCRUDController', ['TalkerService', function(Talker
 		self.findCountriesLiving();
     	// Languages
     	self.findLanguages();
+    	// Languages_you_speak
+    	var talker = {};
+    	talker.id = 4;
+    	self.findLanguagesYouSpeak(talker);
     }
     
 	self.findCountiresBorn = function() {
@@ -51,6 +55,16 @@ appbruxelas.controller('TalkerCRUDController', ['TalkerService', function(Talker
     		console.log(error);  
     	});    	
 	}
+	
+	self.findLanguagesYouSpeak = function(talker) {
+		TalkerService.findLanguagesYouSpeakByTalkerId(talker.id).then(function(resp) {
+			// Languages
+    		self.languagesSpeak = resp.data;
+    		console.log(self.languagesSpeak);
+    	}, function(error) {
+    		console.log(error);  
+    	});    	
+	}	
 
     self.languagesSpeak = [{}];
     

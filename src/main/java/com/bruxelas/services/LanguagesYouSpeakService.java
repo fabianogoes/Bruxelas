@@ -1,5 +1,7 @@
 package com.bruxelas.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,10 +12,14 @@ import com.bruxelas.repositories.LanguagesYouSpeakRepository;
 public class LanguagesYouSpeakService {
 
 	@Autowired
-	private LanguagesYouSpeakRepository LanguagesYouSpeakRepository;
+	private LanguagesYouSpeakRepository languagesYouSpeakRepository;
 
 	public LanguagesYouSpeak save(LanguagesYouSpeak languagesYouSpeak) {
-		return this.LanguagesYouSpeakRepository.save(languagesYouSpeak);
+		return this.languagesYouSpeakRepository.save(languagesYouSpeak);
+	}
+
+	public List<LanguagesYouSpeak> findByTalkerId(Long talkerId) {
+		return this.languagesYouSpeakRepository.findByTalkerId(talkerId);
 	}
 	
 	
