@@ -11,6 +11,10 @@ appbruxelas.config(['$routeProvider', '$httpProvider', function($routeProvider, 
 				.when('/profile', { templateUrl:'talker/form-talker.html'});              
  
 }]);  	
+
+appbruxelas.config(['$locationProvider', function($locationProvider) {
+	  $locationProvider.hashPrefix('');
+}]);
 appbruxelas.factory('ConnectionService', ['$http', function($http) {
 
     var _findByUser = function(userId) {
@@ -130,7 +134,7 @@ appbruxelas.controller('TalkerCRUDController', ['TalkerService', function(Talker
     var self = this;
     
     self.openedBirthDate = true;
-	
+    
 	self.dateOptions = {
 	    formatYear: 'yy',
 	    maxDate: new Date(2020, 5, 22),
