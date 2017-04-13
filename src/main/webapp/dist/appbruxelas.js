@@ -51,6 +51,10 @@ appbruxelas.factory('TalkerService', ['$http', function($http) {
         return $http.get('/bruxelas/api/talker/languages');
     }
 
+    var _findLanguagesYouSpeakByTalkerId = function(talkerId) {
+    	return $http.get('/bruxelas/api/talker/languagesyouspeak/'+talkerId);
+    }
+    
     var _addLanguageSpeak = function(languageSpeak) {
     	return $http.post('/bruxelas/api/talker/languagelearn', languageSpeak);
     }
@@ -64,6 +68,8 @@ appbruxelas.factory('TalkerService', ['$http', function($http) {
         findCountries : _findCountries,
 
         findLanguages : _findLanguages,
+        
+        findLanguagesYouSpeakByTalkerId : _findLanguagesYouSpeakByTalkerId,
         
         addLanguageSpeak : _addLanguageSpeak,
 
@@ -154,6 +160,10 @@ appbruxelas.controller('TalkerCRUDController', ['TalkerService', function(Talker
 		self.findCountriesLiving();
     	// Languages
     	self.findLanguages();
+    	// Languages_you_speak
+    	var talker = {};
+    	talker.id = 4;
+    	self.findLanguagesYouSpeak(talker);
     }
     
 	self.findCountiresBorn = function() {
@@ -182,6 +192,17 @@ appbruxelas.controller('TalkerCRUDController', ['TalkerService', function(Talker
     		console.log(error);  
     	});    	
 	}
+	
+	self.findLanguagesYouSpeak = function(talker) {
+		TalkerService.findLanguagesYouSpeakByTalkerId(talker.id).then(function(resp) {
+			// Languages
+    		self.languagesSpeak = resp.data;
+    		console.log(self.languagesSpeak);
+    		self.languagesSpeak.push(new Object());    		
+    	}, function(error) {
+    		console.log(error);  
+    	});    	
+	}	
 
     self.languagesSpeak = [{}];
     
@@ -192,7 +213,8 @@ appbruxelas.controller('TalkerCRUDController', ['TalkerService', function(Talker
     	languageSpeak.talker = self.talker;
     	console.log(languageSpeak);
     	TalkerService.addLanguageSpeak(languageSpeak).then(function(resp) {
-    		self.languagesSpeak.push(resp.data); 
+    		//self.languagesSpeak.push(resp.data);
+    		self.findLanguagesYouSpeak(self.talker);    		
     	}, function(error) {
     		alert(error.data);
     	})

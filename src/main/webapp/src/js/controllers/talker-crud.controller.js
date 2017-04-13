@@ -61,6 +61,7 @@ appbruxelas.controller('TalkerCRUDController', ['TalkerService', function(Talker
 			// Languages
     		self.languagesSpeak = resp.data;
     		console.log(self.languagesSpeak);
+    		self.languagesSpeak.push(new Object());    		
     	}, function(error) {
     		console.log(error);  
     	});    	
@@ -75,7 +76,8 @@ appbruxelas.controller('TalkerCRUDController', ['TalkerService', function(Talker
     	languageSpeak.talker = self.talker;
     	console.log(languageSpeak);
     	TalkerService.addLanguageSpeak(languageSpeak).then(function(resp) {
-    		self.languagesSpeak.push(resp.data); 
+    		//self.languagesSpeak.push(resp.data);
+    		self.findLanguagesYouSpeak(self.talker);    		
     	}, function(error) {
     		alert(error.data);
     	})
