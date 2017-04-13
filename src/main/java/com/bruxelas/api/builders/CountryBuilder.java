@@ -1,5 +1,7 @@
 package com.bruxelas.api.builders;
 
+import java.util.List;
+
 import com.bruxelas.entities.Country;
 import com.bruxelas.entities.Language;
 
@@ -17,10 +19,15 @@ public class CountryBuilder {
 		return this;
 	}
 	
-	public CountryBuilder withLanguage(Language language){
-		this.country.setLanguage(language);
+	public CountryBuilder withLanguages(List<Language> languages){
+		this.country.setLanguages(languages);
 		return this;
 	}
+	
+	public CountryBuilder withNativeName(String nativeName){
+		this.country.setNativeName(nativeName);
+		return this;
+	}	
 	
 	public Country build(){
 		return this.country;

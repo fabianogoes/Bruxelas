@@ -75,14 +75,14 @@ public class TalkerRestControllerTest {
 		
 		this.languageAny = new LanguageBuilder()
 				.withId(null)
-				.withName(RandomValueGeneratorHelper.anyString(10))
-				.withNativeName(RandomValueGeneratorHelper.anyString(10))
+				.withName(RandomValueGeneratorHelper.anyString(10))				
 				.build();
 		
 		this.countryAny = new CountryBuilder()
 				.withId(null)
 				.withName(RandomValueGeneratorHelper.anyString())
-				.withLanguage(this.languageAny)
+				.withNativeName(RandomValueGeneratorHelper.anyString(10))
+				.withLanguages(Arrays.asList(this.languageAny))
 				.build();
 		
 		this.talkerAny = new TalkerBuilder()

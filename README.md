@@ -11,62 +11,13 @@ Bruxelas Project - Connect to Practice
 * Spring Social
 * Spring Security
 
-------   
-
-### Bruxelas Project Backend
-
-**Production Environment**
-
-```   
-CREATE SCHEMA bruxelas DEFAULT CHARACTER SET utf8;
-CREATE USER 'bruxelas'@'localhost' IDENTIFIED BY 'bruxelas';
-GRANT ALL PRIVILEGES ON * . * TO 'bruxelas'@'localhost';
-```   
-
-**Inserts**   
-
-```
-insert into language(name, native_name) values('Portuguese', 'Português');
-insert into language(name, native_name) values('English', 'English');
-
-insert into country(name, language_id) values('Brazil', 1);
-insert into country(name, language_id) values('USA', 2);
-```   
-
-
-> set Profile = prod   
-
-``` 
-spring.profiles.active=prod
-```   
-
-------    
-
-### Bruxelas Project Frontend
-
-**Development Environemnt**   
-
-```
-$ npm install && grunt build
-```
-
 ------    
 
 http://bruxelas-fabianoggoes.rhcloud.com/
 
-![Dash](doc/dash-1.0.JPG)
+![Dash](doc/dash-1.0.png)
 
 ------
 
-**Openshift Data**
-
->  WildFly 9 administrator added.  Please make note of these credentials:
->
->   Username: adminWa3FYT4
->   Password: BZrsRpcmSplb
->   
->   run 'rhc port-forward bruxelas' to access the web admin area on port 9990.
-
-------   
 
 [![Build Status](https://travis-ci.org/fabianogoes/bruxelas.svg?branch=master)](https://travis-ci.org/fabianogoes/bruxelas)

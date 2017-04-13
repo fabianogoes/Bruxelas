@@ -18,4 +18,8 @@ public class LanguageService {
 		return (List<Language>) this.languageRepository.findAll();
 	}
 
+	public Language save(Language language) {
+		return this.languageRepository.save(language);
+	}
+
 }

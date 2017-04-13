@@ -1,8 +1,13 @@
 package com.bruxelas.entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Language {
@@ -12,15 +17,22 @@ public class Language {
 	private Long id;
 
 	private String name;
-	private String nativeName;
+
+	@JsonIgnore
+	@ManyToMany(mappedBy = "languages")
+	private List<Country> countries;
 
 	public Language() {
 	}
 
-	public Language(Long id, String name, String nativeName) {
+	public Language(Long id, String name) {
 		this.id = id;
 		this.name = name;
-		this.nativeName = nativeName;
+	}
+
+	public Language(Long id, String name, List<Country> countries) {
+		this(id, name);
+		this.countries = countries;
 	}
 
 	public Long getId() {
@@ -39,12 +51,12 @@ public class Language {
 		this.name = name;
 	}
 
-	public String getNativeName() {
-		return nativeName;
+	public List<Country> getCountries() {
+		return countries;
 	}
 
-	public void setNativeName(String nativeName) {
-		this.nativeName = nativeName;
+	public void setCountries(List<Country> countries) {
+		this.countries = countries;
 	}
 
 	@Override
@@ -74,7 +86,7 @@ public class Language {
 
 	@Override
 	public String toString() {
-		return "Language [id=" + id + ", name=" + name + ", nativeName=" + nativeName + "]";
+		return "Language [id=" + id + ", name=" + name + ", countries=" + countries + "]";
 	}
 
 }

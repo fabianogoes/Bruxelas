@@ -20,9 +20,4 @@ public class LanguageBuilder {
 		return this;
 	}
 	
-	public LanguageBuilder withNativeName(String nativeName){
-		this.language.setNativeName(nativeName);
-		return this;
-	}
-	
 }
