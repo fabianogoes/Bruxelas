@@ -1,4 +1,4 @@
-package com.bruxelas.api.helpers;
+package com.bruxelas.helpers;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;

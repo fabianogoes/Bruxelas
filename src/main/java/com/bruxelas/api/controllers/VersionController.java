@@ -16,31 +16,15 @@ import com.bruxelas.services.VersionService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
-@RequestMapping("/api")
-public class DashRestController {
+@RequestMapping("/api/version")
+public class VersionController {
 
-	private static final Logger logger = LoggerFactory.getLogger(DashRestController.class);
+	private static final Logger logger = LoggerFactory.getLogger(VersionController.class);
 	
 	@Autowired
 	private VersionService versionService;
 	
 	@RequestMapping(produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<String> get(){
-		logger.info( "get()..." );
-		ResponseEntity<String> responseEntity = null;
-		try {
-			String welcome =  "Welcome Bruxelas Project 1.0.20170327";
-			HttpHeaders responseHeaders = new HttpHeaders();
-			String usuariosJson = new ObjectMapper().writeValueAsString(welcome);
-			responseEntity = new ResponseEntity<String>(usuariosJson, responseHeaders, HttpStatus.OK);
-		} catch (Exception e) {
-			logger.error(e.getMessage());
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
-		}
-		return responseEntity;
-	}
-	
-	@RequestMapping(value="/version", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<String> getActualVersion(){
 		logger.info( "getActualVersion()..." );
 		ResponseEntity<String> responseEntity = null;
@@ -56,7 +40,7 @@ public class DashRestController {
 		return responseEntity;
 	}
 	
-	@RequestMapping(value="/version/{build}/{commit}", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@RequestMapping(value="/{build}/{commit}", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<String> incrementVersion(@PathVariable("build") String build, @PathVariable("commit") String commit){
 		logger.info( "getActualVersion("+build+", "+commit+")..." );
 		ResponseEntity<String> responseEntity = null;

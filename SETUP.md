@@ -226,6 +226,8 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+insert into version (build, build_date, message) values ('1', DATE_FORMAT(NOW(),'%Y%m%d'), 'First Build');
+
 -- Dump completed on 2017-04-13 11:33:00
 ```
 

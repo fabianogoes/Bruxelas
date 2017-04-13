@@ -11,8 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import com.bruxelas.api.helpers.CalendarToStringSerializerHelpser;
-import com.bruxelas.api.helpers.StringToCalendarDeserializerHelper;
+import com.bruxelas.helpers.CalendarToStringSerializerHelpser;
+import com.bruxelas.helpers.StringToCalendarDeserializerHelper;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 

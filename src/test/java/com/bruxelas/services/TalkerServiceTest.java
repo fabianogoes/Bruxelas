@@ -22,13 +22,13 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.bruxelas.BruxelasApplication;
-import com.bruxelas.api.builders.CountryBuilder;
-import com.bruxelas.api.builders.LanguageBuilder;
-import com.bruxelas.api.builders.TalkerBuilder;
-import com.bruxelas.api.helpers.RandomValueGeneratorHelper;
+import com.bruxelas.builders.CountryBuilder;
+import com.bruxelas.builders.LanguageBuilder;
+import com.bruxelas.builders.TalkerBuilder;
 import com.bruxelas.entities.Country;
 import com.bruxelas.entities.Language;
 import com.bruxelas.entities.Talker;
+import com.bruxelas.helpers.RandomValueGeneratorHelper;
 import com.bruxelas.repositories.TalkerRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)

@@ -1,4 +1,4 @@
-package com.bruxelas.api.helpers;
+package com.bruxelas.helpers;
 
 import java.util.Random;
 

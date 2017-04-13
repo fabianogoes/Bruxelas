@@ -1,4 +1,4 @@
-package com.bruxelas.api.builders;
+package com.bruxelas.builders;
 
 import java.util.List;
 

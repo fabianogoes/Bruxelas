@@ -33,8 +33,8 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.bruxelas.BruxelasApplication;
-import com.bruxelas.api.helpers.EntityAnyValueHelper;
 import com.bruxelas.entities.ConnectionType;
+import com.bruxelas.helpers.EntityAnyValueHelper;
 import com.bruxelas.services.ConnectionTypeService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 

@@ -33,13 +33,13 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.bruxelas.BruxelasApplication;
-import com.bruxelas.api.builders.CountryBuilder;
-import com.bruxelas.api.builders.LanguageBuilder;
-import com.bruxelas.api.builders.TalkerBuilder;
-import com.bruxelas.api.helpers.RandomValueGeneratorHelper;
+import com.bruxelas.builders.CountryBuilder;
+import com.bruxelas.builders.LanguageBuilder;
+import com.bruxelas.builders.TalkerBuilder;
 import com.bruxelas.entities.Country;
 import com.bruxelas.entities.Language;
 import com.bruxelas.entities.Talker;
+import com.bruxelas.helpers.RandomValueGeneratorHelper;
 import com.bruxelas.services.TalkerService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 

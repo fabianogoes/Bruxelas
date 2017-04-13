@@ -1,6 +1,6 @@
-package com.bruxelas.api.helpers;
+package com.bruxelas.helpers;
 
-import com.bruxelas.api.builders.ConnectionTypeBuilder;
+import com.bruxelas.builders.ConnectionTypeBuilder;
 import com.bruxelas.entities.CategoryConnectionType;
 import com.bruxelas.entities.ConnectionType;
 
