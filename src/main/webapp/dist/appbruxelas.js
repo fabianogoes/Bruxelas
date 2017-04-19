@@ -152,10 +152,7 @@ appbruxelas.controller('SessionController', ['$scope', 'SessionService', functio
     self.init();
 
 }]);
-
-appbruxelas.controller('TalkerCRUDController', ['$scope', 'TalkerService', function($scope, TalkerService) {
-
-appbruxelas.controller('TalkerCRUDController', ['TalkerService','$filter', function(TalkerService, $filter) {
+appbruxelas.controller('TalkerCRUDController', ['TalkerService','$filter', '$scope', function(TalkerService, $filter, $scope) {
 
     var self = this;
     
@@ -181,9 +178,6 @@ appbruxelas.controller('TalkerCRUDController', ['TalkerService','$filter', funct
     	// Languages
     	self.findLanguages();
     	// Languages_you_speak
-    	var talker = {};
-    	talker.id = 4;
-    	self.findLanguagesYouSpeak(talker);
     	
     	self.findTalkerByUser($scope.userLogged);
     	
@@ -192,6 +186,7 @@ appbruxelas.controller('TalkerCRUDController', ['TalkerService','$filter', funct
     self.findTalkerByUser = function(user) {
     	TalkerService.findByUser(user).then(function(resp) {
     		self.talker = resp.data;
+    		self.findLanguagesYouSpeak(self.talker);
     	}, function(error) {
     		alert(error.data);
     	});
@@ -275,7 +270,6 @@ appbruxelas.controller('TalkerCRUDController', ['TalkerService','$filter', funct
     	}, function(error) {
     		alert(error.data);
     	});
-    	
     }
     
     self.init();
