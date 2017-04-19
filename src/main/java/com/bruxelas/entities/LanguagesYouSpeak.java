@@ -18,18 +18,20 @@ public class LanguagesYouSpeak {
 	@ManyToOne
 	private Language language;
 
-	private Boolean learning;
+//	private Boolean learning;
 
 	private LearningLevelType level;
 
 	public LanguagesYouSpeak() {
 	}
 
-	public LanguagesYouSpeak(Long id, Talker talker, Language language, Boolean learning, LearningLevelType level) {
+	public LanguagesYouSpeak(Long id, Talker talker, Language language, 
+//			Boolean learning, 
+			LearningLevelType level) {
 		this.id = id;
 		this.talker = talker;
 		this.language = language;
-		this.learning = learning;
+//		this.learning = learning;
 		this.level = level;
 	}
 
@@ -57,13 +59,13 @@ public class LanguagesYouSpeak {
 		this.language = language;
 	}
 
-	public Boolean getLearning() {
-		return learning;
-	}
-
-	public void setLearning(Boolean learning) {
-		this.learning = learning;
-	}
+//	public Boolean getLearning() {
+//		return learning;
+//	}
+//
+//	public void setLearning(Boolean learning) {
+//		this.learning = learning;
+//	}
 
 	public LearningLevelType getLevel() {
 		return level;
@@ -100,8 +102,9 @@ public class LanguagesYouSpeak {
 
 	@Override
 	public String toString() {
-		return "LanguagesYouSpeak [id=" + id + ", talker=" + talker + ", language=" + language + ", learning="
-				+ learning + ", level=" + level + "]";
+		return "LanguagesYouSpeak [id=" + id + ", talker=" + talker + ", language=" + language + 
+//				", learning=" + learning + 
+				", level=" + level + "]";
 	}
 
 }

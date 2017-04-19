@@ -66,4 +66,8 @@ public class TalkerService {
 	public List<LanguagesYouSpeak> findLanguageLearnByTalker(Long talkerId) {
 		return this.LanguagesYouSpeakService.findByTalkerId(talkerId);
 	}
+
+	public void deleteLanguageLearn(Long languageId) {
+		this.LanguagesYouSpeakService.delete(languageId);	
+	}
 }
