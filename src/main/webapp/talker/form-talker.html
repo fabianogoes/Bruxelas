@@ -17,7 +17,7 @@
 									<label>Name: </label>
 									<input data-ng-model="tcc.talker.name" class="form-control input-sm" placeholder="Fulano de Tal"/>
 								</div>
-								<div class="col-md-3">
+								<div class="col-md-3" >
 									<label>Birth Date: </label>
 									<span class="input-group">
 										<input data-ng-model="tcc.talker.birthDate"size="10" class="form-control input-sm"
@@ -38,23 +38,23 @@
 							<div class="row">
 								<div class="col-md-4">
 									<label>Born in: </label> 
-									<select class="form-control input-sm" data-ng-model="tcc.talker.bornIn.id">
+									<select class="form-control input-sm" data-ng-model="tcc.talker.bornIn"
+										data-ng-options="c.name for c in tcc.countriesBorn track by c.id">
 										<option value=""></option> 
-										<option data-ng-repeat="c in tcc.countriesBorn" value="{{c.id}}">{{ c.name }}</option>
 									</select>
 								</div>  
 								<div class="col-md-4"> 
 									<label>Living in: </label>
-									<select class="form-control input-sm" data-ng-model="tcc.talker.livingIn.id">
+									<select class="form-control input-sm" data-ng-model="tcc.talker.livingIn"
+										data-ng-options="c.name for c in tcc.countriesLiving track by c.id">
 										<option value=""></option>
-										<option data-ng-repeat="c in tcc.countriesLiving" value="{{c.id}}">{{ c.name }}</option>
 									</select>
 								</div>
 								<div class="col-md-4">
 									<label>Native language: </label>
-									<select class="form-control input-sm" data-ng-model="tcc.talker.nativeLanguage.id">
+									<select class="form-control input-sm" data-ng-model="tcc.talker.nativeLanguage"
+										data-ng-options="c.name for c in tcc.languages track by c.id">
 										<option value=""></option>
-										<option data-ng-repeat="l in tcc.languages" value="{{l.id}}">{{ l.name }}</option>
 									</select>
 								</div>
 							</div>
@@ -75,46 +75,58 @@
 				<div class="col-md-12">
 					<div class="panel panel-warning">
 						<div class="panel-body">
-							<label class="control-label col-md-3 text-center center-object padding-left-right-5">Languages you speak or learn: </label>
+							<label class="control-label col-md-3 text-center" style="padding-left: 0px">Languages you speak or learn: </label>
 
-							<div class="col-md-8">
-								<div data-ng-repeat="l in tcc.languagesSpeak" class="col-md-12 center-object padding-left-right-5">
-									<label class="col-md-2 padding-left-right-5">Languange: </label>
+							<div class="col-md-6" style="padding-left: 0px">
+								<div data-ng-repeat="l in tcc.languagesSpeak" class="col-md-12 center-object" style="padding-left: 0px; padding-bottom: 5px;">
+									<label class="col-md-2" style="padding-left: 0px">Languange: </label>
 									<div class="col-md-3 padding-left-right-5">
-										<select class="form-control input-xs" data-ng-model="tcc.languageSpeak.language" 
-												data-ng-options="l.name for l in tcc.languages">
+										<select class="form-control input-sm" data-ng-model="l.language" data-ng-show="l.edit" 
+												data-ng-options="l.name for l in tcc.languages track by l.id">
 										</select>
+										<input class="form-control input-sm" data-ng-value="l.language.name" 
+											 data-ng-show="!l.edit" disabled="disabled"/>
 									</div>
 									<label class="col-md-1 padding-left-right-5" 
 											data-ng-show="tcc.languageSpeak.learning == true" >Level: </label>
-									<div class="col-md-3 padding-left-right-5" data-ng-model="l.level" 
-										 data-ng-show="tcc.languageSpeak.learning == true" >
-										<select class="form-control input-xs">
-											<option>BEGINNER</option>
-											<option>INTERMEDIATE</option>
-											<option>ADVANCED</option>
+									<div class="col-md-4 padding-left-right-5">
+										<select class="form-control input-sm" data-ng-model="l.level" data-ng-show="l.edit">
+											<option value="BEGINNER">BEGINNER</option>
+											<option value="INTERMEDIATE">INTERMEDIATE</option>
+											<option value="ADVANCED">ADVANCED</option>
+											<option value="FLUENT">FLUENT</option>
 										</select>
+										<input class="form-control input-sm" data-ng-value="l.level" 
+											 data-ng-show="!l.edit" disabled="disabled"/>
 									</div>
-									<div data-ng-show="tcc.languageSpeak.learning == false || tcc.languageSpeak.learning == undefined" 
-										 class="col-md-4 padding-left-right-5"></div>
-									<label class="col-md-2 padding-left-right-5"> 
-										<input type="checkbox" data-ng-model="tcc.languageSpeak.learning"/> Learning 
-									</label>
-									<div class="col-md-1">
-										<button data-ng-disabled="$index == 0" data-ng-click="tcc.popLanguages($index)" 
-												class="btn btn-danger btn-xs">
+<!-- 									<div data-ng-show="l.learning == false || l.learning == undefined"  -->
+<!-- 										 class="col-md-3 padding-left-right-5"></div> -->
+<!-- 									<label class="col-md-3 padding-left-right-5">  -->
+<!-- 										<input type="checkbox" data-ng-model="l.learning" data-ng-disabled="!l.edit"/> Learning  -->
+<!-- 									</label> -->
+									<div>
+										<button data-ng-disabled="!l.edit" data-ng-click="l.edit = false"
+												class="btn btn-link btn-xs">
 											<i class="fa fa-remove"></i> 
 										</button>
+										<button class="btn btn-link btn-xs" data-ng-click="l.edit = true" data-ng-disabled="l.edit">
+											<i class="fa fa-pencil"></i>
+										</button>
+										<button class="btn btn-link btn-xs" data-ng-click="tcc.saveLanguage(l)"
+												data-ng-disabled="!l.edit">
+											<i class="fa fa-save"></i>
+										</button>
+										<button class="btn btn-link btn-xs" data-ng-click="tcc.popLanguages($index, l)"
+												data-ng-disabled="$index == 0">
+											<i class="fa fa-trash"></i>
+										</button>
 									</div>
-									<br>
-									<br>
 								</div>
 							</div>
-
 							<div class="col-md-1 padding-left-right-5">
 								<button class="btn btn-success bg-dark-green-template" data-ng-click="tcc.addLanguage(tcc.languageSpeak)"
 										data-ng-disabled="tcc.languagesSpeak.length >= 7">
-									<i class="fa fa-save"></i>
+									<i class="fa fa-plus"></i>
 								</button>
 							</div>
 						</div>

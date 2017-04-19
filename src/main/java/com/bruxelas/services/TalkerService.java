@@ -72,5 +72,8 @@ public class TalkerService {
 
 	public Talker findByUser(Long userId) {
 		return this.talkerRepository.findByUserId(userId);
+  }
+	public void deleteLanguageLearn(Long languageId) {
+		this.LanguagesYouSpeakService.delete(languageId);	
 	}
 }

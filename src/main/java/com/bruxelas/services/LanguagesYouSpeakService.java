@@ -21,6 +21,10 @@ public class LanguagesYouSpeakService {
 	public List<LanguagesYouSpeak> findByTalkerId(Long talkerId) {
 		return this.languagesYouSpeakRepository.findByTalkerId(talkerId);
 	}
+
+	public void delete(Long languageId) {
+		this.languagesYouSpeakRepository.delete(languageId);;
+	}
 	
 	
 	

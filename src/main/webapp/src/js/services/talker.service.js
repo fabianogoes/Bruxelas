@@ -16,6 +16,10 @@ appbruxelas.factory('TalkerService', ['$http', function($http) {
     	return $http.post('/bruxelas/api/talker/languagelearn', languageSpeak);
     }
     
+    var _removeLanguageSpeak = function(langaugeSpeak) {
+    	return $http.post('/bruxelas/api/talker/languagelearn/delete/' + langaugeSpeak.id);
+    }
+    
     var _save = function(talker) {
     	return $http.post('/bruxelas/api/talker', talker);
     }
@@ -35,6 +39,8 @@ appbruxelas.factory('TalkerService', ['$http', function($http) {
         addLanguageSpeak : _addLanguageSpeak,
 
         save : _save,
+
+        removeLanguageSpeak : _removeLanguageSpeak,
 
         findByUser : _findByUser
         

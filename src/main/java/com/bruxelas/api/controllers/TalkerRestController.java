@@ -186,4 +186,14 @@ public class TalkerRestController {
 		return responseEntity;
 	}		
 	
+	@RequestMapping(value="/languagelearn/delete/{id}", method=RequestMethod.POST, produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public void deleteLanguagelearn(@PathVariable("id") Long languageId){
+		logger.info( "deleteLanguagelearn()..." );
+		try {
+			this.talkerService.deleteLanguageLearn(languageId);			
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+	}
+	
 }
