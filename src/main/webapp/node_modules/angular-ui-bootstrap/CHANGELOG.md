@@ -1,3 +1,42 @@
+<a name="2.5.0"></a>
+# [2.5.0](https://github.com/angular-ui/bootstrap/compare/2.4.0...v2.5.0) (2017-01-28)
+
+
+### Bug Fixes
+
+* **angular:** add compatibility with Angular 1.6([0d79005](https://github.com/angular-ui/bootstrap/commit/0d79005)), closes [#6427](https://github.com/angular-ui/bootstrap/issues/6427) [#6360](https://github.com/angular-ui/bootstrap/issues/6360)
+* **carousel:** remove transition buffering([86ee770](https://github.com/angular-ui/bootstrap/commit/86ee770)), closes [#6367](https://github.com/angular-ui/bootstrap/issues/6367) [#5967](https://github.com/angular-ui/bootstrap/issues/5967)
+* **dropdown:** do nothing if not open when clicking([761db7b](https://github.com/angular-ui/bootstrap/commit/761db7b)), closes [#6414](https://github.com/angular-ui/bootstrap/issues/6414)
+* **tooltip:** unbind keypress listener on hide([f5b357f](https://github.com/angular-ui/bootstrap/commit/f5b357f)), closes [#6423](https://github.com/angular-ui/bootstrap/issues/6423) [#6405](https://github.com/angular-ui/bootstrap/issues/6405)
+
+
+### Features
+
+* **dropdown:** make dropdown-append-to-body configurable ([#6356](https://github.com/angular-ui/bootstrap/issues/6356))([7d3a750](https://github.com/angular-ui/bootstrap/commit/7d3a750))
+* **pagination:** Added menu and menuitem roles (closes [#6383](https://github.com/angular-ui/bootstrap/issues/6383)) ([#6386](https://github.com/angular-ui/bootstrap/issues/6386))([71dc691](https://github.com/angular-ui/bootstrap/commit/71dc691)), closes [#6383](https://github.com/angular-ui/bootstrap/issues/6383) [(#6386](https://github.com/(/issues/6386)
+
+
+
+<a name="2.4.0"></a>
+# [2.4.0](https://github.com/angular-ui/bootstrap/compare/2.3.2...v2.4.0) (2016-12-30)
+
+
+### Features
+
+* **dateparser:** allow overriding of parsers([5a3e44a](https://github.com/angular-ui/bootstrap/commit/5a3e44a)), closes [#6370](https://github.com/angular-ui/bootstrap/issues/6370) [#6373](https://github.com/angular-ui/bootstrap/issues/6373)
+
+
+
+<a name="2.3.2"></a>
+## [2.3.2](https://github.com/angular-ui/bootstrap/compare/2.3.1...v2.3.2) (2016-12-27)
+
+
+### Bug Fixes
+
+* **dropdown:** re-add close([955848c](https://github.com/angular-ui/bootstrap/commit/955848c)), closes [#6382](https://github.com/angular-ui/bootstrap/issues/6382) [#6321](https://github.com/angular-ui/bootstrap/issues/6321) [#6357](https://github.com/angular-ui/bootstrap/issues/6357) [#6364](https://github.com/angular-ui/bootstrap/issues/6364)
+
+
+
 <a name="2.3.1"></a>
 ## [2.3.1](https://github.com/angular-ui/bootstrap/compare/2.3.0...v2.3.1) (2016-12-10)
 

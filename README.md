@@ -21,3 +21,9 @@ http://bruxelas-fabianoggoes.rhcloud.com/
 
 
 [![Build Status](https://travis-ci.org/fabianogoes/bruxelas.svg?branch=master)](https://travis-ci.org/fabianogoes/bruxelas)
+
+- Default User
+Insert Into user(email, password) values('maggierogers@bruxelas.com.br', '123456');
+- Talker
+Insert Into talker(birth_date, name, born_in_id, user_id) 
+ values ('1999-12-19', 'Maggie Rogers', 1, (select u.id from user u where u.email = 'maggierogers@bruxelas.com.br' ));

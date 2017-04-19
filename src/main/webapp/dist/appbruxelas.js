@@ -31,7 +31,8 @@ appbruxelas.factory('ConnectionService', ['$http', function($http) {
 appbruxelas.factory('SessionService', ['$http', function($http) {
 
     var _getSession = function() {
-        return $http.get('http/user-session.json');
+        //return $http.get('http/user-session.json');
+    	return $http.get('/bruxelas/api/user/getsession');
     }
 
     return {
@@ -63,6 +64,10 @@ appbruxelas.factory('TalkerService', ['$http', function($http) {
     	return $http.post('/bruxelas/api/talker', talker);
     }
     
+    var _findByUser = function(user) {
+    	return $http.get('/bruxelas/api/talker/findbyuser/'+user.id);
+    }
+    
     return {
 
         findCountries : _findCountries,
@@ -73,8 +78,10 @@ appbruxelas.factory('TalkerService', ['$http', function($http) {
         
         addLanguageSpeak : _addLanguageSpeak,
 
-        save : _save
+        save : _save,
 
+        findByUser : _findByUser
+        
     }
 
 }]);
@@ -120,13 +127,17 @@ appbruxelas.controller('HomeController', ['ConnectionService', 'VersionService',
     self.init();
 
 }]);
-appbruxelas.controller('SessionController', ['SessionService', function(SessionService) {
+appbruxelas.controller('SessionController', ['$scope', 'SessionService', function($scope, SessionService) {
 
     var self  = this;
 
     self.init = function() {
         SessionService.getSession().then(function(resp) {
+        	console.log(resp); 
             self.userLogged = resp.data;
+            $scope.userLogged = self.userLogged;
+            if(!self.userLogged || self.userLogged == "null")
+            	window.location.href = '/bruxelas/user/login';
         }, function(error) {
             alert(error.data);
         });
@@ -135,7 +146,7 @@ appbruxelas.controller('SessionController', ['SessionService', function(SessionS
     self.init();
 
 }]);
-appbruxelas.controller('TalkerCRUDController', ['TalkerService', function(TalkerService) {
+appbruxelas.controller('TalkerCRUDController', ['$scope', 'TalkerService', function($scope, TalkerService) {
 
     var self = this;
     
@@ -164,6 +175,17 @@ appbruxelas.controller('TalkerCRUDController', ['TalkerService', function(Talker
     	var talker = {};
     	talker.id = 4;
     	self.findLanguagesYouSpeak(talker);
+    	
+    	self.findTalkerByUser($scope.userLogged);
+    	
+    }
+    
+    self.findTalkerByUser = function(user) {
+    	TalkerService.findByUser(user).then(function(resp) {
+    		self.talker = resp.data;
+    	}, function(error) {
+    		alert(error.data);
+    	});
     }
     
 	self.findCountiresBorn = function() {

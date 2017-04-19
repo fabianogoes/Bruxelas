@@ -169,5 +169,21 @@ public class TalkerRestController {
 		}
 		return responseEntity;
 	}
+
+	@RequestMapping(value="/findbyuser/{userId}", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<String> findByUSer(@PathVariable("userId") Long userId){
+		logger.info( "findByUSer("+userId+")..." );
+		ResponseEntity<String> responseEntity = null;
+		try {
+			Talker talker = this.talkerService.findByUser(userId); 
+			HttpHeaders responseHeaders = new HttpHeaders();
+			String json = new ObjectMapper().writeValueAsString(talker);
+			responseEntity = new ResponseEntity<String>(json, responseHeaders, HttpStatus.OK);
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+		}
+		return responseEntity;
+	}		
 	
 }

@@ -8,6 +8,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -40,6 +41,9 @@ public class Talker {
 
 	@ManyToOne
 	private Language nativeLanguage;
+	
+	@OneToOne
+	private User user;	
 
 	public Talker() {
 	}
@@ -108,6 +112,14 @@ public class Talker {
 
 	public void setNativeLanguage(Language nativeLanguage) {
 		this.nativeLanguage = nativeLanguage;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	@Override

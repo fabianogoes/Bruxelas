@@ -20,6 +20,10 @@ appbruxelas.factory('TalkerService', ['$http', function($http) {
     	return $http.post('/bruxelas/api/talker', talker);
     }
     
+    var _findByUser = function(user) {
+    	return $http.get('/bruxelas/api/talker/findbyuser/'+user.id);
+    }
+    
     return {
 
         findCountries : _findCountries,
@@ -30,8 +34,10 @@ appbruxelas.factory('TalkerService', ['$http', function($http) {
         
         addLanguageSpeak : _addLanguageSpeak,
 
-        save : _save
+        save : _save,
 
+        findByUser : _findByUser
+        
     }
 
 }]);
