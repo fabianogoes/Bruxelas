@@ -1,4 +1,4 @@
-appbruxelas.controller('TalkerCRUDController', ['TalkerService','$filter', function(TalkerService, $filter) {
+appbruxelas.controller('TalkerCRUDController', ['TalkerService','$filter', '$scope', function(TalkerService, $filter, $scope) {
 
     var self = this;
     
@@ -27,6 +27,17 @@ appbruxelas.controller('TalkerCRUDController', ['TalkerService','$filter', funct
     	var talker = {};
     	talker.id = 4;
     	self.findLanguagesYouSpeak(talker);
+    	
+    	self.findTalkerByUser($scope.userLogged);
+    	
+    }
+    
+    self.findTalkerByUser = function(user) {
+    	TalkerService.findByUser(user).then(function(resp) {
+    		self.talker = resp.data;
+    	}, function(error) {
+    		alert(error.data);
+    	});
     }
     
 	self.findCountiresBorn = function() {

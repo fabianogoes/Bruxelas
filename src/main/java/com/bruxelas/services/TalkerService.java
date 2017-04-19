@@ -29,6 +29,9 @@ public class TalkerService {
 	
 	@Autowired
 	private LanguagesYouSpeakService LanguagesYouSpeakService;
+
+	@Autowired
+	private TalkerRepository talkerRepository;
 	
 	public Talker save(Talker talker) {
 		logger.info("save("+talker+")");
@@ -67,6 +70,9 @@ public class TalkerService {
 		return this.LanguagesYouSpeakService.findByTalkerId(talkerId);
 	}
 
+	public Talker findByUser(Long userId) {
+		return this.talkerRepository.findByUserId(userId);
+  }
 	public void deleteLanguageLearn(Long languageId) {
 		this.LanguagesYouSpeakService.delete(languageId);	
 	}

@@ -8,4 +8,6 @@ import com.bruxelas.entities.Talker;
 @Repository
 public interface TalkerRepository extends CrudRepository<Talker, Long> {
 
+	Talker findByUserId(Long userId); 
+
 }
