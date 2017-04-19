@@ -1,8 +1,8 @@
-appbruxelas.controller('TalkerCRUDController', ['TalkerService', function(TalkerService) {
+appbruxelas.controller('TalkerCRUDController', ['TalkerService','$filter', function(TalkerService, $filter) {
 
     var self = this;
     
-    self.openedBirthDate = true;
+    self.openedBirthDate = false;
     
 	self.dateOptions = {
 	    formatYear: 'yy',
@@ -58,10 +58,7 @@ appbruxelas.controller('TalkerCRUDController', ['TalkerService', function(Talker
 	
 	self.findLanguagesYouSpeak = function(talker) {
 		TalkerService.findLanguagesYouSpeakByTalkerId(talker.id).then(function(resp) {
-			// Languages
     		self.languagesSpeak = resp.data;
-    		console.log(self.languagesSpeak);
-    		self.languagesSpeak.push(new Object());    		
     	}, function(error) {
     		console.log(error);  
     	});    	
@@ -69,34 +66,47 @@ appbruxelas.controller('TalkerCRUDController', ['TalkerService', function(Talker
 
     self.languagesSpeak = [{}];
     
-    self.addLanguage = function(languageSpeak){ 
-    	if(self.languagesSpeak.lenght >= 7){
-    		return;
-    	}
+    self.saveLanguage = function(languageSpeak){ 
     	languageSpeak.talker = self.talker;
-    	console.log(languageSpeak);
     	TalkerService.addLanguageSpeak(languageSpeak).then(function(resp) {
-    		//self.languagesSpeak.push(resp.data);
     		self.findLanguagesYouSpeak(self.talker);    		
     	}, function(error) {
     		alert(error.data);
     	})
     }
     
-    self.popLanguages = function(i){
-    	self.languagesSpeak.splice(i, 1);
+    self.addLanguage = function(languageSpeak){ 
+    	if(self.languagesSpeak.lenght >= 7){
+    		return;
+    	}
+    	self.languagesSpeak.push(new Object());
+    }
+    
+    self.popLanguages = function(i, lang){
+    	if(lang.id){
+        	TalkerService.removeLanguageSpeak(lang).then(function(resp) {
+        		self.findLanguagesYouSpeak(self.talker);    		
+        	}, function(error) {
+        		console.log(error.data);
+        	})   		
+    	}else{
+    		self.languagesSpeak.splice(i, 1);
+    	}
     }
     
     self.save = function(talker) {
+    	talker.birthDate = $filter('date')(talker.birthDate, "dd/MM/yyyy");
     	console.log(JSON.stringify(talker));
     	//var _t = {"name":"Diego", "birthDate": "19/12/1986"}; // {"name":"Diego", "birthDate": "19/12/1986", "nacionality": {"id": 1}, "livingIn": {"id": 1}, "nativeLanguage": {"id": 1}}
     	TalkerService.save(talker).then(function(resp) {
     		self.talker = resp.data;
+    		console.log(self.talker.birthDate);
+    		self.talker.birthDate = $filter('date')(self.talker.birthDate, "dd/MM/yyyy");
     		alert('Talker sucessfully saved');
+    		self.addLanguage();
     	}, function(error) {
     		alert(error.data);
     	});
-    	
     }
     
     self.init();
