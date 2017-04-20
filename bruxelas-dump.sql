@@ -51,7 +51,7 @@ CREATE TABLE `country` (
   `name` varchar(255) DEFAULT NULL,
   `native_name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=251 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -102,7 +102,7 @@ CREATE TABLE `language` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=369 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -133,7 +133,7 @@ CREATE TABLE `languages_you_speak` (
   KEY `FK6amis3rkg5fnum92riacs001v` (`talker_id`),
   CONSTRAINT `FK6amis3rkg5fnum92riacs001v` FOREIGN KEY (`talker_id`) REFERENCES `talker` (`id`),
   CONSTRAINT `FKpn6pyja0rqxpeh46h3q3epa01` FOREIGN KEY (`language_id`) REFERENCES `language` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -171,7 +171,7 @@ CREATE TABLE `talker` (
   CONSTRAINT `FKmwtr4uqh8so8mxnf52uceaf6r` FOREIGN KEY (`born_in_id`) REFERENCES `country` (`id`),
   CONSTRAINT `FKosd1cesvokm3tk396n67b45vl` FOREIGN KEY (`native_language_id`) REFERENCES `language` (`id`),
   CONSTRAINT `FKrdg63f8lkqr1tnpt7p88uo7a1` FOREIGN KEY (`living_in_id`) REFERENCES `country` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -196,7 +196,7 @@ CREATE TABLE `user` (
   `email` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -222,7 +222,7 @@ CREATE TABLE `version` (
   `build_date` varchar(255) DEFAULT NULL,
   `message` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -245,7 +245,5 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 Insert Into user(email, password) values('maggierogers@bruxelas.com.br', '123456');
-Insert Into talker(birth_date, name, born_in_id, user_id) 
-values ('1999-12-19', 'Maggie Rogers', (select c.id from country c where c.native_name = 'United States'), (select u.id from user u where u.email = 'maggierogers@bruxelas.com.br' ));
+Insert Into talker(birth_date, name, born_in_id, user_id) values ('1999-12-19', 'Maggie Rogers', 237, 1);
 
--- Dump completed on 2017-04-20 11:30:01
