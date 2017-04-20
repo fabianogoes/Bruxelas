@@ -140,12 +140,6 @@ CREATE TABLE `languages_you_speak` (
 -- Dumping data for table `languages_you_speak`
 --
 
-LOCK TABLES `languages_you_speak` WRITE;
-/*!40000 ALTER TABLE `languages_you_speak` DISABLE KEYS */;
-INSERT INTO `languages_you_speak` VALUES (1,'',NULL,1,1),(2,'',NULL,326,3),(3,'',NULL,315,3),(4,'',NULL,8,4),(5,'',NULL,2,5),(6,'',NULL,2,6),(7,'',NULL,2,6),(8,'',NULL,2,6),(9,'',NULL,2,6),(10,'',NULL,1,7),(11,NULL,0,2,17);
-/*!40000 ALTER TABLE `languages_you_speak` ENABLE KEYS */;
-UNLOCK TABLES;
-
 --
 -- Table structure for table `talker`
 --
