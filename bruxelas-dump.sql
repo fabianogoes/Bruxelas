@@ -180,7 +180,7 @@ CREATE TABLE `talker` (
 
 LOCK TABLES `talker` WRITE;
 /*!40000 ALTER TABLE `talker` DISABLE KEYS */;
-INSERT INTO `talker` VALUES (1,NULL,NULL,'aaaaaaa',1,1,1,NULL),(2,NULL,NULL,'ffffff',3,5,5,NULL),(3,NULL,NULL,'asdfsadf',2,4,4,NULL),(4,NULL,NULL,'dfadsfad',3,7,8,NULL),(5,NULL,NULL,'fasfsadfsd',3,6,8,NULL),(6,NULL,NULL,'ffsadasd',4,3,3,NULL),(7,NULL,NULL,'aaaaa',1,2,6,NULL),(8,NULL,NULL,'fasdfasd',1,1,1,NULL),(9,NULL,NULL,'aaa',3,4,6,NULL),(10,NULL,NULL,'fasdfasd',2,4,5,NULL),(11,NULL,NULL,'asdfsadfsad',1,1,1,NULL),(12,NULL,NULL,'dsfasdf',2,2,5,NULL),(13,NULL,NULL,'fsadf',1,3,3,NULL),(14,NULL,NULL,'fasdfsdf',4,4,12,NULL),(15,NULL,NULL,'asdfsadf',1,3,3,NULL),(16,NULL,NULL,'fasdfas',4,4,6,NULL),(17,'2017-04-19',NULL,'Maggie Rogers',237,237,19,1);
+INSERT INTO `talker` VALUES (1,'2017-04-19',NULL,'Maggie Rogers',237,237,19,1);
 /*!40000 ALTER TABLE `talker` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -244,6 +244,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
-Insert Into user(email, password) values('maggierogers@bruxelas.com.br', '123456');
-Insert Into talker(birth_date, name, born_in_id, user_id) values ('1999-12-19', 'Maggie Rogers', 237, 1);
-
+-- Dump completed on 2017-04-20 11:30:01
