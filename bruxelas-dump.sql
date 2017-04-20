@@ -244,4 +244,8 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+Insert Into user(email, password) values('maggierogers@bruxelas.com.br', '123456');
+Insert Into talker(birth_date, name, born_in_id, user_id) 
+values ('1999-12-19', 'Maggie Rogers', (select c.id from country c where c.native_name = 'United States'), (select u.id from user u where u.email = 'maggierogers@bruxelas.com.br' ));
+
 -- Dump completed on 2017-04-20 11:30:01
