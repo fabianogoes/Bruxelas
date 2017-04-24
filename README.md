@@ -13,7 +13,7 @@ Bruxelas Project - Connect to Practice
 
 ------    
 
-http://bruxelas-fabianoggoes.rhcloud.com/
+[Bruxelas](http://31.220.55.236:8080/bruxelas)
 
 ![Dash](doc/dash-1.0.png)
 
