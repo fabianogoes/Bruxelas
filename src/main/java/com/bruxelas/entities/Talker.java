@@ -1,5 +1,6 @@
 package com.bruxelas.entities;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import javax.persistence.Entity;
@@ -149,7 +150,8 @@ public class Talker {
 
 	@Override
 	public String toString() {
-		return "Talker [id=" + id + ", name=" + name + ", birthDate=" + birthDate + ", gender=" + gender + ", bornIn="
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		return "Talker [id=" + id + ", name=" + name + ", birthDate=" + dateFormat.format(birthDate.getTime()) + ", gender=" + gender + ", bornIn="
 				+ bornIn + ", livingIn=" + livingIn + ", nativeLanguage=" + nativeLanguage + "]";
 	}
 

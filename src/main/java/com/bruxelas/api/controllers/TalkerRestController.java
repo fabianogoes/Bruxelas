@@ -20,6 +20,7 @@ import com.bruxelas.entities.Country;
 import com.bruxelas.entities.Language;
 import com.bruxelas.entities.LanguagesYouSpeak;
 import com.bruxelas.entities.Talker;
+import com.bruxelas.entities.TalkerConnection;
 import com.bruxelas.services.TalkerService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -154,8 +155,8 @@ public class TalkerRestController {
 	}	
 	
 	@RequestMapping(value="/languagelearn", method=RequestMethod.POST, produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<String> getLanguagelearn(@RequestBody LanguagesYouSpeak languagesYouSpeak){
-		logger.info( "getLanguagelearn()..." );
+	public ResponseEntity<String> addLanguagelearn(@RequestBody LanguagesYouSpeak languagesYouSpeak){
+		logger.info( "addLanguagelearn("+languagesYouSpeak+")..." );
 		ResponseEntity<String> responseEntity = null;
 		try {
 			this.talkerService.addLanguageLearn(languagesYouSpeak);			
@@ -195,5 +196,22 @@ public class TalkerRestController {
 			logger.error(e.getMessage());
 		}
 	}
+	
+	@RequestMapping(value="/connection", method=RequestMethod.POST, produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<String> addConnection(@RequestBody TalkerConnection talkerConnection){
+		logger.info( "addConnection("+talkerConnection+")..." );
+		ResponseEntity<String> responseEntity = null;
+		try {
+			this.talkerService.addConnection(talkerConnection);			
+			
+			HttpHeaders responseHeaders = new HttpHeaders();
+			String talkerConnectionJson = new ObjectMapper().writeValueAsString(talkerConnection);
+			responseEntity = new ResponseEntity<String>(talkerConnectionJson, responseHeaders, HttpStatus.OK);
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+		}
+		return responseEntity;
+	}	
 	
 }
