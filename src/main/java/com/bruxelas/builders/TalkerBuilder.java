@@ -1,5 +1,7 @@
 package com.bruxelas.builders;
 
+import java.util.Calendar;
+
 import com.bruxelas.entities.Country;
 import com.bruxelas.entities.Language;
 import com.bruxelas.entities.Talker;
@@ -37,4 +39,8 @@ public class TalkerBuilder {
 		return this;
 	}
 	
+	public TalkerBuilder withBirthDate(Calendar birthDate){
+		this.talker.setBirthDate(birthDate);
+		return this;
+	}
 }

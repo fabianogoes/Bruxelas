@@ -8,6 +8,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 
 import org.junit.Before;
@@ -71,6 +72,7 @@ public class TalkerServiceTest {
 				.withBornIn(this.countryAny)
 				.withLivingIn(this.countryAny)
 				.withNativeLanguage(this.languageAny)
+				.withBirthDate(Calendar.getInstance())
 				.build();
 	}	
 	

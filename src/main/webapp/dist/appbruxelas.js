@@ -218,7 +218,7 @@ appbruxelas.controller('TalkerCRUDController', ['SessionService', 'TalkerService
 
 	self.findLanguages = function() {
 		TalkerService.findLanguages().then(function(resp) {
-    	// Languages
+			// Languages
     		self.languages = resp.data;
     	}, function(error) {
     		console.log(error);  
@@ -265,7 +265,7 @@ appbruxelas.controller('TalkerCRUDController', ['SessionService', 'TalkerService
     }
     
     self.save = function(talker) {
-    	talker.birthDate = $filter('date')(talker.birthDate, "dd/MM/yyyy");
+//    	talker.birthDate = $filter('date')(talker.birthDate, "dd/MM/yyyy");
     	console.log(JSON.stringify(talker));
     	//var _t = {"name":"Diego", "birthDate": "19/12/1986"}; // {"name":"Diego", "birthDate": "19/12/1986", "nacionality": {"id": 1}, "livingIn": {"id": 1}, "nativeLanguage": {"id": 1}}
     	TalkerService.save(talker).then(function(resp) {

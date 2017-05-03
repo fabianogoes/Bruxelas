@@ -15,7 +15,7 @@ public class StringToCalendarDeserializerHelper extends JsonDeserializer<Calenda
     public Calendar deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JsonProcessingException {
         try {
             String formatted = p.getValueAsString();
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
              
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(sdf.parse(formatted));

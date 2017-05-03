@@ -13,6 +13,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 
 import org.junit.Before;
@@ -91,6 +92,7 @@ public class TalkerRestControllerTest {
 				.withBornIn(this.countryAny)
 				.withLivingIn(this.countryAny)
 				.withNativeLanguage(this.languageAny)
+				.withBirthDate(Calendar.getInstance())
 				.build();
 		
 		this.talkersAny = Arrays.asList(this.talkerAny);
