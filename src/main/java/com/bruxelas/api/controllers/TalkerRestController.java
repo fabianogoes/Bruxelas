@@ -20,6 +20,7 @@ import com.bruxelas.entities.Country;
 import com.bruxelas.entities.Language;
 import com.bruxelas.entities.LanguagesYouSpeak;
 import com.bruxelas.entities.Talker;
+import com.bruxelas.entities.TalkerConnection;
 import com.bruxelas.services.TalkerService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -41,8 +42,8 @@ public class TalkerRestController {
 			List<Talker> talkers = this.talkerService.findAll();
 			
 			HttpHeaders responseHeaders = new HttpHeaders();
-			String usuariosJson = new ObjectMapper().writeValueAsString(talkers);
-			responseEntity = new ResponseEntity<String>(usuariosJson, responseHeaders, HttpStatus.OK);
+			String talkerJson = new ObjectMapper().writeValueAsString(talkers);
+			responseEntity = new ResponseEntity<String>(talkerJson, responseHeaders, HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
@@ -58,8 +59,8 @@ public class TalkerRestController {
 			Talker talker = this.talkerService.findOne(id);
 			
 			HttpHeaders responseHeaders = new HttpHeaders();
-			String usuariosJson = new ObjectMapper().writeValueAsString(talker);
-			responseEntity = new ResponseEntity<String>(usuariosJson, responseHeaders, HttpStatus.OK);
+			String talkerJson = new ObjectMapper().writeValueAsString(talker);
+			responseEntity = new ResponseEntity<String>(talkerJson, responseHeaders, HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
@@ -76,8 +77,8 @@ public class TalkerRestController {
 			talker = this.talkerService.save(talker);
 			
 			HttpHeaders responseHeaders = new HttpHeaders();
-			String usuariosJson = new ObjectMapper().writeValueAsString(talker);
-			responseEntity = new ResponseEntity<String>(usuariosJson, responseHeaders, HttpStatus.OK);
+			String talkerJson = new ObjectMapper().writeValueAsString(talker);
+			responseEntity = new ResponseEntity<String>(talkerJson, responseHeaders, HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
@@ -93,8 +94,8 @@ public class TalkerRestController {
 			this.talkerService.delete(id);
 			
 			HttpHeaders responseHeaders = new HttpHeaders();
-			String usuariosJson = new ObjectMapper().writeValueAsString("Delete["+id+"] OK");
-			responseEntity = new ResponseEntity<String>(usuariosJson, responseHeaders, HttpStatus.OK);
+			String talkerJson = new ObjectMapper().writeValueAsString("Delete["+id+"] OK");
+			responseEntity = new ResponseEntity<String>(talkerJson, responseHeaders, HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
@@ -110,8 +111,8 @@ public class TalkerRestController {
 			List<Country> countries = this.talkerService.findAllCountries();
 			
 			HttpHeaders responseHeaders = new HttpHeaders();
-			String usuariosJson = new ObjectMapper().writeValueAsString(countries);
-			responseEntity = new ResponseEntity<String>(usuariosJson, responseHeaders, HttpStatus.OK);
+			String talkerJson = new ObjectMapper().writeValueAsString(countries);
+			responseEntity = new ResponseEntity<String>(talkerJson, responseHeaders, HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
@@ -127,8 +128,8 @@ public class TalkerRestController {
 			List<Language> languages = this.talkerService.findAllLanguages();			
 			
 			HttpHeaders responseHeaders = new HttpHeaders();
-			String usuariosJson = new ObjectMapper().writeValueAsString(languages);
-			responseEntity = new ResponseEntity<String>(usuariosJson, responseHeaders, HttpStatus.OK);
+			String talkerJson = new ObjectMapper().writeValueAsString(languages);
+			responseEntity = new ResponseEntity<String>(talkerJson, responseHeaders, HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
@@ -144,8 +145,8 @@ public class TalkerRestController {
 			List<LanguagesYouSpeak> languagesYouSpeaks = this.talkerService.findLanguageLearnByTalker(talkerId);
 			
 			HttpHeaders responseHeaders = new HttpHeaders();
-			String usuariosJson = new ObjectMapper().writeValueAsString(languagesYouSpeaks);
-			responseEntity = new ResponseEntity<String>(usuariosJson, responseHeaders, HttpStatus.OK);
+			String talkerJson = new ObjectMapper().writeValueAsString(languagesYouSpeaks);
+			responseEntity = new ResponseEntity<String>(talkerJson, responseHeaders, HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
@@ -154,15 +155,15 @@ public class TalkerRestController {
 	}	
 	
 	@RequestMapping(value="/languagelearn", method=RequestMethod.POST, produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<String> getLanguagelearn(@RequestBody LanguagesYouSpeak languagesYouSpeak){
-		logger.info( "getLanguagelearn()..." );
+	public ResponseEntity<String> addLanguagelearn(@RequestBody LanguagesYouSpeak languagesYouSpeak){
+		logger.info( "addLanguagelearn("+languagesYouSpeak+")..." );
 		ResponseEntity<String> responseEntity = null;
 		try {
 			this.talkerService.addLanguageLearn(languagesYouSpeak);			
 			
 			HttpHeaders responseHeaders = new HttpHeaders();
-			String usuariosJson = new ObjectMapper().writeValueAsString(languagesYouSpeak);
-			responseEntity = new ResponseEntity<String>(usuariosJson, responseHeaders, HttpStatus.OK);
+			String talkerJson = new ObjectMapper().writeValueAsString(languagesYouSpeak);
+			responseEntity = new ResponseEntity<String>(talkerJson, responseHeaders, HttpStatus.OK);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
@@ -195,5 +196,22 @@ public class TalkerRestController {
 			logger.error(e.getMessage());
 		}
 	}
+	
+	@RequestMapping(value="/connection", method=RequestMethod.POST, produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<String> addConnection(@RequestBody TalkerConnection talkerConnection){
+		logger.info( "addConnection("+talkerConnection+")..." );
+		ResponseEntity<String> responseEntity = null;
+		try {
+			this.talkerService.addConnection(talkerConnection);			
+			
+			HttpHeaders responseHeaders = new HttpHeaders();
+			String talkerConnectionJson = new ObjectMapper().writeValueAsString(talkerConnection);
+			responseEntity = new ResponseEntity<String>(talkerConnectionJson, responseHeaders, HttpStatus.OK);
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+		}
+		return responseEntity;
+	}	
 	
 }

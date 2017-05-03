@@ -10,31 +10,39 @@ import org.springframework.stereotype.Service;
 import com.bruxelas.entities.Country;
 import com.bruxelas.entities.Language;
 import com.bruxelas.entities.LanguagesYouSpeak;
+import com.bruxelas.entities.RequestedType;
 import com.bruxelas.entities.Talker;
+import com.bruxelas.entities.TalkerConnection;
 import com.bruxelas.repositories.TalkerRepository;
 
 @Service
 public class TalkerService {
 
 	private static final Logger logger = LoggerFactory.getLogger(TalkerService.class);
-	
+
 	@Autowired
 	private TalkerRepository repository;
-	
+
 	@Autowired
-	private CountryService countryService; 
-	
+	private CountryService countryService;
+
 	@Autowired
 	private LanguageService languageService;
-	
+
 	@Autowired
 	private LanguagesYouSpeakService LanguagesYouSpeakService;
 
 	@Autowired
 	private TalkerRepository talkerRepository;
+
+	@Autowired
+	private TalkerConnectionService talkerConnectionService;
 	
+	@Autowired
+	private ConnectionService connectionService;
+
 	public Talker save(Talker talker) {
-		logger.info("save("+talker+")");
+		logger.info("save(" + talker + ")");
 		talker = this.repository.save(talker);
 		return talker;
 	}
@@ -45,12 +53,12 @@ public class TalkerService {
 	}
 
 	public Talker findOne(long id) {
-		logger.info("findOne("+id+")");
+		logger.info("findOne(" + id + ")");
 		return this.repository.findOne(id);
 	}
 
 	public void delete(long id) {
-		logger.info("delete("+id+")");
+		logger.info("delete(" + id + ")");
 		this.repository.delete(id);
 	}
 
@@ -72,8 +80,19 @@ public class TalkerService {
 
 	public Talker findByUser(Long userId) {
 		return this.talkerRepository.findByUserId(userId);
-  }
-	public void deleteLanguageLearn(Long languageId) {
-		this.LanguagesYouSpeakService.delete(languageId);	
 	}
+
+	public void deleteLanguageLearn(Long languageId) {
+		this.LanguagesYouSpeakService.delete(languageId);
+	}
+	
+	public TalkerConnection addConnection(TalkerConnection talkerConnection){
+		this.connectionService.save(talkerConnection.getConnection());
+		
+		talkerConnection.setRequested(RequestedType.REQUESTED);
+		this.talkerConnectionService.save(talkerConnection);
+		
+		return talkerConnection;
+	}
+	
 }
