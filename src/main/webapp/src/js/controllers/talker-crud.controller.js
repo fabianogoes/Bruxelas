@@ -63,7 +63,7 @@ appbruxelas.controller('TalkerCRUDController', ['SessionService', 'TalkerService
 
 	self.findLanguages = function() {
 		TalkerService.findLanguages().then(function(resp) {
-    	// Languages
+			// Languages
     		self.languages = resp.data;
     	}, function(error) {
     		console.log(error);  

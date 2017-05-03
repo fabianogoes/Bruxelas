@@ -1,5 +1,22 @@
 body{
-	background-color: #e9e9e9;	
+	background-color: #e9e9e9;
+}
+
+.body-talker-page{
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0px;
+    left:0px;
+    z-index:1000;
+	background: #e9e9e9; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(to bottom, #32505A, #32505A 30%, #e9e9e9 50%);; /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(to bottom, #32505A, #32505A 30%, #e9e9e9 50%);; /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(to bottom, #32505A, #32505A 30%, #e9e9e9 50%);; /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom, #32505A, #32505A 30%, #e9e9e9 50%);; /* Standard syntax */
+	background-attachment:fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .footer {
@@ -81,6 +98,11 @@ body{
 	
 	.visible-less-than-sm{
 		display: none !important;
+	}
+	
+	.btn-talker-page{
+		position:relative;
+		min-height:200px;
 	}
 }
 
