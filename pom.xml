@@ -31,20 +31,22 @@
 			<artifactId>spring-boot-devtools</artifactId>
 		</dependency>
 
-		<!-- <dependency> -->
-		<!-- <groupId>org.springframework.boot</groupId> -->
-		<!-- <artifactId>spring-boot-starter-web</artifactId> -->
-		<!-- </dependency> -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-			<exclusions>
-				<exclusion>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-starter-tomcat</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
+
+
+		<!-- <dependency> -->
+		<!-- <groupId>org.springframework.boot</groupId> -->
+		<!-- <artifactId>spring-boot-starter-web</artifactId> -->
+		<!-- <exclusions> -->
+		<!-- <exclusion> -->
+		<!-- <groupId>org.springframework.boot</groupId> -->
+		<!-- <artifactId>spring-boot-starter-tomcat</artifactId> -->
+		<!-- </exclusion> -->
+		<!-- </exclusions> -->
+		<!-- </dependency> -->
 
 		<dependency>
 			<groupId>mysql</groupId>
@@ -52,11 +54,11 @@
 			<scope>runtime</scope>
 		</dependency>
 
-		<!-- <dependency> -->
-		<!-- <groupId>org.springframework.boot</groupId> -->
-		<!-- <artifactId>spring-boot-starter-tomcat</artifactId> -->
-		<!-- <scope>provided</scope> -->
-		<!-- </dependency> -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
@@ -80,45 +82,45 @@
 	<build>
 		<finalName>bruxelas</finalName>
 		<plugins>
-			<!-- <plugin> -->
-			<!-- <groupId>org.springframework.boot</groupId> -->
-			<!-- <artifactId>spring-boot-maven-plugin</artifactId> -->
-			<!-- </plugin> -->
-
 			<plugin>
-				<groupId>org.wildfly.plugins</groupId>
-				<artifactId>wildfly-maven-plugin</artifactId>
-				<version>1.1.0.Alpha5</version>
-				<configuration>
-					<hostname>127.0.0.1</hostname>
-					<port>9990</port>
-					<username>admin</username>
-					<password>admin</password>
-					<name>bruxelas.war</name>
-				</configuration>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+			<!-- <plugin> -->
+			<!-- <groupId>org.wildfly.plugins</groupId> -->
+			<!-- <artifactId>wildfly-maven-plugin</artifactId> -->
+			<!-- <version>1.1.0.Alpha5</version> -->
+			<!-- <configuration> -->
+			<!-- <hostname>127.0.0.1</hostname> -->
+			<!-- <port>9990</port> -->
+			<!-- <username>admin</username> -->
+			<!-- <password>admin</password> -->
+			<!-- <name>bruxelas.war</name> -->
+			<!-- </configuration> -->
+			<!-- </plugin> -->
 
 		</plugins>
 	</build>
 
-<!-- 	<profiles> -->
-<!-- 		<profile> -->
-<!-- 			<id>openshift</id> -->
-<!-- 			<build> -->
-<!-- 				<finalName>bruxelas</finalName> -->
-<!-- 				<plugins> -->
-<!-- 					<plugin> -->
-<!-- 						<artifactId>maven-war-plugin</artifactId> -->
-<!-- 						<version>2.1.1</version> -->
-<!-- 						<configuration> -->
-<!-- 							<outputDirectory>deployments</outputDirectory> -->
-<!-- 							<warName>ROOT</warName> -->
-<!-- 						</configuration> -->
-<!-- 					</plugin> -->
-<!-- 				</plugins> -->
-<!-- 			</build> -->
-<!-- 		</profile> -->
-<!-- 	</profiles> -->
+	<!-- <profiles> -->
+	<!-- <profile> -->
+	<!-- <id>openshift</id> -->
+	<!-- <build> -->
+	<!-- <finalName>bruxelas</finalName> -->
+	<!-- <plugins> -->
+	<!-- <plugin> -->
+	<!-- <artifactId>maven-war-plugin</artifactId> -->
+	<!-- <version>2.1.1</version> -->
+	<!-- <configuration> -->
+	<!-- <outputDirectory>deployments</outputDirectory> -->
+	<!-- <warName>ROOT</warName> -->
+	<!-- </configuration> -->
+	<!-- </plugin> -->
+	<!-- </plugins> -->
+	<!-- </build> -->
+	<!-- </profile> -->
+	<!-- </profiles> -->
 
 
 </project>

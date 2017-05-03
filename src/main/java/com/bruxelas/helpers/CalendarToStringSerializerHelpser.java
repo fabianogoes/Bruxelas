@@ -13,7 +13,7 @@ public class CalendarToStringSerializerHelpser extends JsonSerializer<Calendar> 
     @Override
     public void serialize(Calendar value, JsonGenerator gen, SerializerProvider serializers) throws IOException, JsonProcessingException {
         if (value != null) {        
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             String formatted = sdf.format(value.getTime());
             gen.writeString(formatted);
         }

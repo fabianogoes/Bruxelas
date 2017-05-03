@@ -8,7 +8,8 @@ appbruxelas.config(['$routeProvider', '$httpProvider', function($routeProvider, 
 
 			$routeProvider
 				.when('/', { templateUrl:'home.html'})             
-				.when('/profile', { templateUrl:'talker/form-talker.html'});              
+				.when('/profile', { templateUrl:'talker/form-talker.html'})              
+				.when('/page', { templateUrl:'talker/talker-page.html'});              
  
 }]);  	
 
@@ -152,7 +153,7 @@ appbruxelas.controller('SessionController', ['$scope', 'SessionService', functio
     self.init();
 
 }]);
-appbruxelas.controller('TalkerCRUDController', ['TalkerService','$filter', '$scope', function(TalkerService, $filter, $scope) {
+appbruxelas.controller('TalkerCRUDController', ['SessionService', 'TalkerService','$filter', '$scope', function(SessionService, TalkerService, $filter, $scope) {
 
     var self = this;
     
@@ -160,8 +161,8 @@ appbruxelas.controller('TalkerCRUDController', ['TalkerService','$filter', '$sco
     
 	self.dateOptions = {
 	    formatYear: 'yy',
-	    maxDate: new Date(2020, 5, 22),
-	    minDate: new Date(),
+	    maxDate: new Date(2000, 1, 1),
+	    minDate: new Date(1920, 1, 1),
 	    startingDay: 1
 	};	
 	
@@ -179,13 +180,18 @@ appbruxelas.controller('TalkerCRUDController', ['TalkerService','$filter', '$sco
     	self.findLanguages();
     	// Languages_you_speak
     	
-    	self.findTalkerByUser($scope.userLogged);
+        SessionService.getSession().then(function(resp) {
+        	self.findTalkerByUser(resp.data);
+        }, function(error) {
+            alert(error.data);
+        });    	
     	
     }
     
     self.findTalkerByUser = function(user) {
     	TalkerService.findByUser(user).then(function(resp) {
     		self.talker = resp.data;
+    		self.talker.birthDate = Date.parse(self.talker.birthDate);
     		self.findLanguagesYouSpeak(self.talker);
     	}, function(error) {
     		alert(error.data);
@@ -230,7 +236,8 @@ appbruxelas.controller('TalkerCRUDController', ['TalkerService','$filter', '$sco
     self.languagesSpeak = [{}];
     
     self.saveLanguage = function(languageSpeak){ 
-    	languageSpeak.talker = self.talker;
+    	languageSpeak.talker = {};
+    	languageSpeak.talker.id = self.talker.id;
     	TalkerService.addLanguageSpeak(languageSpeak).then(function(resp) {
     		self.findLanguagesYouSpeak(self.talker);    		
     	}, function(error) {
@@ -264,7 +271,7 @@ appbruxelas.controller('TalkerCRUDController', ['TalkerService','$filter', '$sco
     	TalkerService.save(talker).then(function(resp) {
     		self.talker = resp.data;
     		console.log(self.talker.birthDate);
-    		self.talker.birthDate = $filter('date')(self.talker.birthDate, "dd/MM/yyyy");
+    		self.talker.birthDate = new Date(self.talker.birthDate);
     		alert('Talker sucessfully saved');
     		self.addLanguage();
     	}, function(error) {

@@ -125,6 +125,11 @@ body{
 	height: 100px;
 }
 
+.talkers-image-circle-lg{
+	border-radius: 100px;
+	height: 200px;
+}
+
 .center-object{
   height: 100%;
   min-height: 100%;
